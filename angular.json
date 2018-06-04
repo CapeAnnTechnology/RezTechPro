@@ -23,10 +23,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/font-awesome/css/font-awesome.css"
             ],
-            "scripts": [
-              "src/assets/js/scripts.js"
+            "scripts": [              
             ]
           },
           "configurations": {
@@ -74,10 +74,10 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/font-awesome/css/font-awesome.css"
             ],
-            "scripts": [
-              "src/assets/js/scripts.js"
+            "scripts": [              
             ],
             "assets": [
               "src/favicon.ico",

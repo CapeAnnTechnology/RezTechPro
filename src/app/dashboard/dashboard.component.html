@@ -1,23 +1,30 @@
 <h3>{{title}}</h3>
 
+
+
+
 <h2>Newest Users List</h2>
 <div class="grid grid-pad">
-  <a *ngFor="let user of users" class="col-1-4"
-      routerLink="/user/{{user.id}}">
+  <div *ngFor="let user of users" class="col-1-4">
+      <a routerLink="/user/{{user.id}}">
     <div class="module user">
-      <h4>{{user.firstName}} {{user.lastName}}</h4>
-      <p>{{user.emailAddress}}</p>
-    </div>
+      <h4>{{user.firstName}} {{user.lastName}}</h4>      
+    </div>    
   </a>
+  <p><a href="mailto:{{user.emailAddress}}"><fa name="envelope-o"></fa> {{user.emailAddress}}</a></p>
+    <p><a href="tel:{{user.phoneNumber}}"><fa name="mobile"></fa> {{user.phoneNumber | phone}}</a></p>
+  </div>
 </div>
 
 <h2>Newest Venues List</h2>
 <div class="grid grid-pad">
-  <a *ngFor="let venue of venues" class="col-1-4"
-      routerLink="/venue/{{venue.id}}">
+  <div *ngFor="let venue of venues" class="col-1-4">
+      <a routerLink="/venue/{{venue.id}}">
     <div class="module venue">
       <h4>{{venue.businessName}}</h4>
-      <p>{{venue.phoneNumber}}</p>
-    </div>
+    </div>    
   </a>
+  <p><a href="tel:{{venue.phoneNumber}}"><fa name="mobile"></fa> {{venue.phoneNumber | phone}}</a></p>
+    <p><a href="https://www.google.com/maps/search/?api=1&query=essex%20ma"><fa name="map-o"></fa> Map</a></p>
+  </div>
 </div>

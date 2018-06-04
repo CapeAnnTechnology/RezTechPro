@@ -16,6 +16,10 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import { VenueComponent } from './venue/venue.component';
 import { VenueDetailComponent } from './venue-detail/venue-detail.component';
 
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+
+import { PhonePipe } from './phone.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +29,7 @@ import { VenueDetailComponent } from './venue-detail/venue-detail.component';
     UserDetailComponent,
     VenueComponent,
     VenueDetailComponent,
+    PhonePipe,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,8 @@ import { VenueDetailComponent } from './venue-detail/venue-detail.component';
     // Remove it when a real server is ready to receive requests.
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
-    )
+    ),
+    AngularFontAwesomeModule
 
   ],
   providers: [],
