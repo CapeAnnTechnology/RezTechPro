@@ -19,6 +19,7 @@ import { VenueDetailComponent } from './venue-detail/venue-detail.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { PhonePipe } from './phone.pipe';
+import { AddressComponent } from './address/address.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { PhonePipe } from './phone.pipe';
     VenueComponent,
     VenueDetailComponent,
     PhonePipe,
+    AddressComponent,
   ],
   imports: [
     BrowserModule,

@@ -10,13 +10,22 @@
   </div><!-- end row -->
   <div class="row">
   <div *ngFor="let user of users" class="col-sm">
-      <a routerLink="/user/{{user.id}}">
-    <div class="module user">
-      <h4>{{user.firstName}} {{user.lastName}}</h4>      
-    </div>    
-  </a>
-  <p><a href="mailto:{{user.emailAddress}}"><fa name="envelope-o"></fa> {{user.emailAddress}}</a></p>
-    <p><a href="tel:{{user.phoneNumber}}"><fa name="mobile"></fa> {{user.phoneNumber | phone}}</a></p>
+    <div>
+          <a routerLink="/user/{{user.id}}">
+        <div class="module user">
+          <img src="https://randomuser.me/api/portraits/{{user.gender}}/{{user.id}}.jpg" class="avatar" />
+          <h4>{{user.firstName}} {{user.lastName}}</h4>      
+        </div>    
+      </a>
+    </div>
+    <div class="mt-1">
+      <div class="btn-group  d-flex" role="group" aria-label="quick links">
+        <a href="tel:{{user.phoneNumber}}" class="btn btn-secondary w-100"><fa name="mobile"></fa> </a>
+        <a href="tel:{{user.emailAddress}}" class="btn btn-secondary w-100"><fa name="envelope-o"></fa> </a>
+        <a href="#" class="btn btn-secondary w-100"><fa name="pencil"></fa> </a>
+        <a href="#" class="btn btn-secondary w-100"><fa name="trash"></fa></a>
+      </div>
+    </div>
   </div>
   </div><!-- end row -->
   <div class="row">
@@ -26,12 +35,22 @@
   </div><!-- end row -->
   <div class="row">
   <div *ngFor="let venue of venues" class="col-sm">
+    <div class="">
       <a routerLink="/venue/{{venue.id}}">
-    <div class="module venue">
-      <h4>{{venue.businessName}}</h4>
-    </div>    
-  </a>
-  <p><a href="tel:{{venue.phoneNumber}}"><fa name="mobile"></fa> {{venue.phoneNumber | phone}}</a></p>
-    <p><a href="https://www.google.com/maps/search/?api=1&query=essex%20ma"><fa name="map-o"></fa> Map</a></p>
+        <div class="module venue">
+          <h4>{{venue.businessName}}</h4>
+          <p>{{addresses[venue.addressID].streetAddress}}<br/>{{addresses[venue.addressID].city}}, {{addresses[venue.addressID].state}}</p>
+        </div>    
+      </a>
+    </div>
+    <div class="mt-1">
+      <div class="btn-group d-flex" role="group" aria-label="quick links">
+        <a href="tel:{{venue.phoneNumber}}" class="btn btn-secondary w-100"><fa name="phone"></fa></a>
+        <a href="tel:{{venue.faxNumber}}" class="btn btn-secondary w-100"><fa name="fax"></fa></a>
+        <a href="https://www.google.com/maps/search/?api=1&query=essex%20ma" class="btn btn-secondary w-100"><fa name="map-o"></fa></a>
+        <a href="#" class="btn btn-secondary w-100"><fa name="pencil"></fa> </a>
+        <a href="#" class="btn btn-secondary w-100"><fa name="trash"></fa></a>
+      </div>
+    </div>
   </div>
 </div>

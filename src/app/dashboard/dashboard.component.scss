@@ -17,16 +17,22 @@ h4 {
   padding: 20px;
   text-align: center;
   color: #eee;
-  max-height: 120px;
   min-width: 120px;
   background-color: #607D8B;
-  border-radius: 2px;
+  border-radius: 4px;
+
+
+  img.avatar {
+    border-radius: 50%;
+  }
 }
 .module:hover {
   background-color: #EEE;
   cursor: pointer;
   color: #607d8b;
 }
+
+
 .grid-pad {
   padding: 10px 0;
 }
