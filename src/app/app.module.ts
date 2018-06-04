@@ -11,12 +11,20 @@ import { AppComponent } from './app.component';
 import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { UserComponent } from './user/user.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
+import { VenueComponent } from './venue/venue.component';
+import { VenueDetailComponent } from './venue-detail/venue-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MessagesComponent,
     DashboardComponent,
+    UserComponent,
+    UserDetailComponent,
+    VenueComponent,
+    VenueDetailComponent,
   ],
   imports: [
     BrowserModule,
