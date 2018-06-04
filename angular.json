@@ -31,6 +31,11 @@
               "src/styles.scss",
               "node_modules/font-awesome/scss/font-awesome.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "../node_modules/bootstrap/scss"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
@@ -82,6 +87,11 @@
               "src/styles.scss",
               "node_modules/font-awesome/scss/font-awesome.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "../node_modules/bootstrap/scss"
+              ]
+            },
             "scripts": [],
             "assets": [
               "src/favicon.ico",
