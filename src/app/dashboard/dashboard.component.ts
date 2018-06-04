@@ -8,6 +8,8 @@ import { UserService } from '../user.service';
 import { VenueService } from '../venue.service';
 import { AddressService } from '../address.service';
 
+import { Title } from '@angular/platform-browser';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -24,12 +26,14 @@ export class DashboardComponent implements OnInit {
 
 	constructor(private userService: UserService,
 				private venueService: VenueService,
-				private addressService: AddressService) { }
+				private addressService: AddressService,
+				private titleService: Title) { }
 
 	ngOnInit() {
 		this.getUsers();
 		this.getVenues();
 		this.getAddresses();
+		this.setTitle("Dashboard");
 	}
 
 	getUsers(): void {
@@ -46,5 +50,9 @@ export class DashboardComponent implements OnInit {
 	    this.addressService.getAddresses()
 	      .subscribe(addresses => this.addresses = addresses);
 	}
+
+	public setTitle( newTitle: string) {
+	    this.titleService.setTitle( newTitle );
+	  }
  
 }

@@ -12,9 +12,9 @@ export class InMemoryDataService implements InMemoryDbService {
     ];
 
     const venues = [
-      {id: 1, businessName: 'John\'s Bar', addressID: 1, phoneNumber: '9785551212', faxNumber: '9785551222', createdAt: '12:45pm 06/03/2018', createdBy: '-1'},
+      {id: 1, businessName: 'John\'s Bar', addressID: 2, phoneNumber: '9785551212', faxNumber: '9785551222', createdAt: '12:45pm 06/03/2018', createdBy: '-1'},
       {id: 2, businessName: 'Jack\'s Bar', addressID: 2, phoneNumber: '9785551212', faxNumber: '9785551222', createdAt: '12:45pm 06/03/2018', createdBy: '-1'},
-      {id: 3, businessName: 'Jose\'s Hideaway', addressID: 3, phoneNumber: '9785551212', faxNumber: '9785551222', createdAt: '12:45pm 06/03/2018', createdBy: '-1'},     
+      {id: 3, businessName: 'Jose\'s Hideaway', addressID: 2, phoneNumber: '9785551212', faxNumber: '9785551222', createdAt: '12:45pm 06/03/2018', createdBy: '-1'},     
     ];
 
     const addresses = [

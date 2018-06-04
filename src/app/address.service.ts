@@ -42,7 +42,7 @@ export class AddressService {
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 
-      // TODO: better job of transforming error for venue consumption
+      // TODO: better job of transforming error for address consumption
       this.log(`${operation} failed: ${error.message}`);
 
       // Let the app keep running by returning an empty result.
@@ -50,9 +50,9 @@ export class AddressService {
     };
   }
 
-  /** Log a VenueService message with the MessageService */
+  /** Log a AddressService message with the MessageService */
   private log(message: string) {
-    this.messageService.add('AddressService: ' + message);
+    this.messageService.addWithStyle('AddressService: ' + message, 'alert-success');
   } 
 
 }

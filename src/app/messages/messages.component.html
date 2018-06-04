@@ -12,7 +12,7 @@
 		  </div>	
 		  
 		  
-		  <div *ngFor='let message of messageService.messages' class="alert alert-primary" role="alert"> {{message}} </div>
+		  <div *ngFor='let message of messageService.messages' class="alert {{message.style}}" role="alert"> {{message.text}} </div>
 
 		</div>
 	</div>
