@@ -27,6 +27,7 @@
               "src/assets"
             ],
             "styles": [
+              "sass/styles.scss",
               "src/styles.scss",
               "node_modules/font-awesome/scss/font-awesome.scss"
             ],
@@ -77,6 +78,7 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
+              "sass/styles.scss",
               "src/styles.scss",
               "node_modules/font-awesome/scss/font-awesome.scss"
             ],
