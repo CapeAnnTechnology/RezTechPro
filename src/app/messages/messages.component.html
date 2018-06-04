@@ -1,8 +1,12 @@
-<div *ngIf="messageService.messages.length">
+<div class="row">
+	<div class="col-sm">
+		<div *ngIf="messageService.messages.length">
 
-  <h2>Messages</h2>
-  <button class="clear"
-          (click)="messageService.clear()">clear</button>
-  <div *ngFor='let message of messageService.messages'> {{message}} </div>
+		  <h2>Messages</h2>
+		  <button class="clear btn btn-secondary btn-sm"
+		          (click)="messageService.clear()">clear <fa name="times-circle"></fa></button>
+		  <div *ngFor='let message of messageService.messages'> {{message}} </div>
 
+		</div>
+	</div>
 </div>

@@ -1,11 +1,15 @@
-<h3>{{title}}</h3>
-
-
-
-
-<h2>Newest Users List</h2>
-<div class="grid grid-pad">
-  <div *ngFor="let user of users" class="col-1-4">
+  <div class="row">
+    <div class="col-sm">
+      <h1>{{title}}</h1>
+    </div>
+  </div><!-- end row -->
+  <div class="row">
+    <div class="col-sm">
+      <h2>Newest Employees</h2>
+    </div>
+  </div><!-- end row -->
+  <div class="row">
+  <div *ngFor="let user of users" class="col-sm">
       <a routerLink="/user/{{user.id}}">
     <div class="module user">
       <h4>{{user.firstName}} {{user.lastName}}</h4>      
@@ -14,11 +18,14 @@
   <p><a href="mailto:{{user.emailAddress}}"><fa name="envelope-o"></fa> {{user.emailAddress}}</a></p>
     <p><a href="tel:{{user.phoneNumber}}"><fa name="mobile"></fa> {{user.phoneNumber | phone}}</a></p>
   </div>
-</div>
-
-<h2>Newest Venues List</h2>
-<div class="grid grid-pad">
-  <div *ngFor="let venue of venues" class="col-1-4">
+  </div><!-- end row -->
+  <div class="row">
+    <div class="col-sm">
+      <h2>Newest Venues</h2>
+    </div>
+  </div><!-- end row -->
+  <div class="row">
+  <div *ngFor="let venue of venues" class="col-sm">
       <a routerLink="/venue/{{venue.id}}">
     <div class="module venue">
       <h4>{{venue.businessName}}</h4>

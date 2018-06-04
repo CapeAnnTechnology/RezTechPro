@@ -27,16 +27,14 @@
               "src/assets"
             ],
             "styles": [
-              "sass/styles.scss",
+              "src/sass/styles.scss",
               "src/styles.scss",
               "node_modules/font-awesome/scss/font-awesome.scss"
             ],
             "stylePreprocessorOptions": {
-              "includePaths": [
-                "../node_modules/bootstrap/scss"
-              ]
+              "includePaths": ["./src", "./node_modules/bootstrap/scss"]
             },
-            "scripts": []
+            "scripts": [ "./node_modules/jquery/dist/jquery.js", "./node_modules/bootstrap/dist/js/bootstrap.js"],
           },
           "configurations": {
             "production": {
@@ -83,16 +81,14 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "sass/styles.scss",
+              "src/sass/styles.scss",
               "src/styles.scss",
               "node_modules/font-awesome/scss/font-awesome.scss"
             ],
             "stylePreprocessorOptions": {
-              "includePaths": [
-                "../node_modules/bootstrap/scss"
-              ]
+              "includePaths": ["./src", "./node_modules/bootstrap/scss"]
             },
-            "scripts": [],
+            "scripts": [ ],
             "assets": [
               "src/favicon.ico",
               "src/assets"
