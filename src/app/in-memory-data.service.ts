@@ -12,9 +12,9 @@ export class InMemoryDataService implements InMemoryDbService {
     ];
 
     const venues = [
-      {id: 1, businessName: 'John\'s Bar', addressID: 2, phoneNumber: '9785551212', faxNumber: '9785551222', createdAt: '12:45pm 06/03/2018', createdBy: '-1'},
+      {id: 1, businessName: 'John\'s Bar', addressID: 1, phoneNumber: '9785551212', faxNumber: '9785551222', createdAt: '12:45pm 06/03/2018', createdBy: '-1'},
       {id: 2, businessName: 'Jack\'s Bar', addressID: 2, phoneNumber: '9785551212', faxNumber: '9785551222', createdAt: '12:45pm 06/03/2018', createdBy: '-1'},
-      {id: 3, businessName: 'Jose\'s Hideaway', addressID: 2, phoneNumber: '9785551212', faxNumber: '9785551222', createdAt: '12:45pm 06/03/2018', createdBy: '-1'},     
+      {id: 3, businessName: 'Jose\'s Hideaway', addressID: 3, phoneNumber: '9785551212', faxNumber: '9785551222', createdAt: '12:45pm 06/03/2018', createdBy: '-1'},     
     ];
 
     const addresses = [
@@ -30,7 +30,16 @@ export class InMemoryDataService implements InMemoryDbService {
       {id: 1, fileName: 'crowd control manager 2017.pdf', filePath: '3/b/crowd control manager 2017.pdf', mimeType: 'application/pdf'}
     ]
 
-    return {users, venues, addresses, files};
+    const forms = [
+      {id: 1, name: 'Daily Form 06/01/2018', 'venueID': 1, createdAt: '12:52pm 06/04/2018', createdBy: 1, user: { id: 1, firstName: 'Johnny', lastName: 'Walker', emailAddress: 'johnny@walker.com', phoneNumber: '9785554321', gender: 'men', createdAt: '12:34pm 06/03/2018', createdBy: '-1' }},
+      {id: 2, name: 'Daily Form 06/02/2018', 'venueID': 1, createdAt: '12:52pm 06/04/2018', createdBy: 2, user: { id: 5, firstName: 'Blake', lastName: 'Stamper', emailAddress: 'blakes@teleworm.us', phoneNumber: '9785554321', gender: 'men', createdAt: '12:34pm 06/03/2018', createdBy: '-1' }},
+      {id: 3, name: 'Daily Form 06/03/2018', 'venueID': 1, createdAt: '12:52pm 06/04/2018', createdBy: 2, user: { id: 5, firstName: 'Blake', lastName: 'Stamper', emailAddress: 'blakes@teleworm.us', phoneNumber: '9785554321', gender: 'men', createdAt: '12:34pm 06/03/2018', createdBy: '-1' }},
+      {id: 4, name: 'Daily Form 06/01/2018', 'venueID': 2, createdAt: '12:52pm 06/04/2018', createdBy: 3, user: { id: 1, firstName: 'Johnny', lastName: 'Walker', emailAddress: 'johnny@walker.com', phoneNumber: '9785554321', gender: 'men', createdAt: '12:34pm 06/03/2018', createdBy: '-1' }},
+      {id: 5, name: 'Daily Form 06/02/2018', 'venueID': 3, createdAt: '12:52pm 06/04/2018', createdBy: 2, user: { id: 1, firstName: 'Johnny', lastName: 'Walker', emailAddress: 'johnny@walker.com', phoneNumber: '9785554321', gender: 'men', createdAt: '12:34pm 06/03/2018', createdBy: '-1' }},
+      {id: 5, name: 'Daily Form 06/03/2018', 'venueID': 3, createdAt: '12:52pm 06/04/2018', createdBy: 1, user: { id: 1, firstName: 'Johnny', lastName: 'Walker', emailAddress: 'johnny@walker.com', phoneNumber: '9785554321', gender: 'men', createdAt: '12:34pm 06/03/2018', createdBy: '-1' }},
+    ]
+
+    return {users, venues, addresses, files, forms};
   }
 }
 

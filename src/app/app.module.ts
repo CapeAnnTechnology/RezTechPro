@@ -20,6 +20,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { PhonePipe } from './phone.pipe';
 import { AddressComponent } from './address/address.component';
+import { FormComponent } from './form/form.component';
+import { FormDetailComponent } from './form-detail/form-detail.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { AddressComponent } from './address/address.component';
     VenueDetailComponent,
     PhonePipe,
     AddressComponent,
+    FormComponent,
+    FormDetailComponent,
   ],
   imports: [
     BrowserModule,

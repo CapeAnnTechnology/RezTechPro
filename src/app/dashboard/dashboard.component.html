@@ -14,7 +14,7 @@
           <a routerLink="/user/{{user.id}}">
         <div class="module user">
           <img src="https://randomuser.me/api/portraits/{{user.gender}}/{{user.id}}.jpg" class="avatar" />
-          <h4>{{user.firstName}} {{user.lastName}}</h4>      
+          <h4>{{user.firstName}} {{users[user.id-1].lastName}}</h4>      
         </div>    
       </a>
     </div>
@@ -43,6 +43,11 @@
              {{addresses[venue.addressID].city}}, {{addresses[venue.addressID].state}}</p>
         </div>    
       </a>
+    </div>
+    <div class="mt-1">
+      <div class="btn-group d-flex" role="group" aria-label="quick links">
+        <a routerLink="/forms/venue/{{venue.id}}" class="btn btn-success w-100"><fa name="check-square-o"></fa></a>
+      </div>
     </div>
     <div class="mt-1">
       <div class="btn-group d-flex" role="group" aria-label="quick links">
