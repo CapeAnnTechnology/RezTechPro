@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-// import { AngularFontAwesomeModule } from 'angular-font-awesome';
-// import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 // import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { AppComponent } from './app.component';
@@ -13,7 +13,7 @@ import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 
-import { AlertComponent } from './_directives';
+import { AlertComponent, NavigationComponent, FooterComponent } from './_directives';
 
 import { AuthGuard } from './_guards';
 
@@ -44,7 +44,9 @@ import { AlertService, AuthenticationService, UserService } from './_services';
     AlertComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent,    
+    NavigationComponent,
+    RegisterComponent,
+    FooterComponent,    
     // MessagesComponent,
     // DashboardComponent,
     // UserComponent,
@@ -55,12 +57,14 @@ import { AlertService, AuthenticationService, UserService } from './_services';
     // AddressComponent,
     // FormComponent,
     // FormDetailComponent,
-    // NavigationComponent,
+    
     
   ],
   imports: [
+    AngularFontAwesomeModule,
     BrowserModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
     routing,
 
@@ -70,8 +74,8 @@ import { AlertService, AuthenticationService, UserService } from './_services';
     // HttpClientInMemoryWebApiModule.forRoot(
     //  InMemoryDataService, { dataEncapsulation: false }
     //),
-    // AngularFontAwesomeModule
-    // FormsModule,
+    
+    
 
   ],
   providers: [

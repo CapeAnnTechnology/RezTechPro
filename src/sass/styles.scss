@@ -31,3 +31,11 @@
 @import "utilities";
 @import "print";
 @import "alert";
+
+body {
+	background: #232323;
+
+	.page {
+		background: #fff;
+	}
+}
