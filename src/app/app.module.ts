@@ -13,6 +13,8 @@ import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 
+import { VenueComponent } from './venue';
+
 import { AlertComponent, NavigationComponent, FooterComponent } from './_directives';
 
 import { AuthGuard } from './_guards';
@@ -31,7 +33,7 @@ import { AlertService, AuthenticationService, UserService } from './_services';
 // import { NavigationComponent } from './navigation';
 // import { UserComponent } from './user/user.component';
 // import { UserDetailComponent } from './user-detail/user-detail.component';
-// import { VenueComponent } from './venue/venue.component';
+
 // import { VenueDetailComponent } from './venue-detail/venue-detail.component';
 
 // import { PhonePipe } from './_pipes';
@@ -42,11 +44,12 @@ import { AlertService, AuthenticationService, UserService } from './_services';
   declarations: [
     AppComponent,
     AlertComponent,
-    HomeComponent,
+    FooterComponent,
+    HomeComponent,    
     LoginComponent,
     NavigationComponent,
-    RegisterComponent,
-    FooterComponent,    
+    RegisterComponent,    
+    VenueComponent,    
     // MessagesComponent,
     // DashboardComponent,
     // UserComponent,
