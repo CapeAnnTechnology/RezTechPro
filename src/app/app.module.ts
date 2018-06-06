@@ -1,67 +1,94 @@
 import { BrowserModule, Title  } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+import { ReactiveFormsModule } from '@angular/forms'; // <-- NgModel lives here
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { HttpClientModule } from '@angular/common/http';
-
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './_services/in-memory-data.service';
+// import { AngularFontAwesomeModule } from 'angular-font-awesome';
+// import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+// import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { AppComponent } from './app.component';
-import { MessagesComponent } from './messages/messages.component';
-import { AppRoutingModule } from './/app-routing.module';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { UserComponent } from './user/user.component';
-import { UserDetailComponent } from './user-detail/user-detail.component';
-import { VenueComponent } from './venue/venue.component';
-import { VenueDetailComponent } from './venue-detail/venue-detail.component';
+import { routing } from './app-routing.module';
+import { HomeComponent } from './home';
+import { LoginComponent } from './login';
+import { RegisterComponent } from './register';
 
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { AlertComponent } from './_directives';
 
-import { PhonePipe } from './_pipes/phone.pipe';
-import { AddressComponent } from './address/address.component';
-import { FormComponent } from './form/form.component';
-import { FormDetailComponent } from './form-detail/form-detail.component';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { AuthGuard } from './_guards';
 
-import { AlertComponent } from './_directives/alert/alert.component';
+import { JwtInterceptor } from './_helpers';
+// used to create fake backend
+import { fakeBackendProvider } from './_helpers';
+
+import { AlertService, AuthenticationService, UserService } from './_services';
+
+// import { AddressComponent } from './address/address.component';
+// import { DashboardComponent } from './dashboard/dashboard.component';
+// import { FormComponent } from './form/form.component';
+// import { FormDetailComponent } from './form-detail/form-detail.component';
+// import { MessagesComponent } from './messages/messages.component';
+// import { NavigationComponent } from './navigation';
+// import { UserComponent } from './user/user.component';
+// import { UserDetailComponent } from './user-detail/user-detail.component';
+// import { VenueComponent } from './venue/venue.component';
+// import { VenueDetailComponent } from './venue-detail/venue-detail.component';
+
+// import { PhonePipe } from './_pipes';
+// import { InMemoryDataService }  from './_services/in-memory-data.service';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    MessagesComponent,
-    DashboardComponent,
-    UserComponent,
-    UserDetailComponent,
-    VenueComponent,
-    VenueDetailComponent,
-    PhonePipe,
-    AddressComponent,
-    FormComponent,
-    FormDetailComponent,
     AlertComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent,
+    RegisterComponent,    
+    // MessagesComponent,
+    // DashboardComponent,
+    // UserComponent,
+    // UserDetailComponent,
+    // VenueComponent,
+    // VenueDetailComponent,
+    // PhonePipe,
+    // AddressComponent,
+    // FormComponent,
+    // FormDetailComponent,
+    // NavigationComponent,
+    
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    AppRoutingModule,
+    ReactiveFormsModule,
     HttpClientModule,
- 
+    routing,
+
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    ),
-    AngularFontAwesomeModule
+    // HttpClientInMemoryWebApiModule.forRoot(
+    //  InMemoryDataService, { dataEncapsulation: false }
+    //),
+    // AngularFontAwesomeModule
+    // FormsModule,
 
   ],
-  providers: [Title],
+  providers: [
+        AuthGuard,
+        AlertService,
+        AuthenticationService,
+        Title,
+        UserService,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: JwtInterceptor,
+            multi: true
+        },
+
+        // provider used to create fake backend
+        fakeBackendProvider
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
