@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Venue } from '../venue';
-import { User } from '../user';
-import { Address } from '../address';
+import { Venue } from '../_models/venue';
+import { User } from '../_models/user';
+import { Address } from '../_models/address';
 
-import { UserService } from '../user.service';
-import { VenueService } from '../venue.service';
-import { AddressService } from '../address.service';
+import { UserService } from '../_services/user.service';
+import { VenueService } from '../_services/venue.service';
+import { AddressService } from '../_services/address.service';
 
 import { Title } from '@angular/platform-browser';
 

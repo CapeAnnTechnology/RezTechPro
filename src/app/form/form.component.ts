@@ -2,9 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { Form } from '../form';
+import { Form } from '../_models/form';
 
-import { FormService } from '../form.service';
+import { FormService } from '../_services/form.service';
 
 import { Title } from '@angular/platform-browser';
 

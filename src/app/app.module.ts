@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { HttpClientModule } from '@angular/common/http';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './in-memory-data.service';
+import { InMemoryDataService }  from './_services/in-memory-data.service';
 
 import { AppComponent } from './app.component';
 import { MessagesComponent } from './messages/messages.component';
@@ -18,10 +18,15 @@ import { VenueDetailComponent } from './venue-detail/venue-detail.component';
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
-import { PhonePipe } from './phone.pipe';
+import { PhonePipe } from './_pipes/phone.pipe';
 import { AddressComponent } from './address/address.component';
 import { FormComponent } from './form/form.component';
 import { FormDetailComponent } from './form-detail/form-detail.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+
+import { AlertComponent } from './_directives/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +41,10 @@ import { FormDetailComponent } from './form-detail/form-detail.component';
     AddressComponent,
     FormComponent,
     FormDetailComponent,
+    AlertComponent,
+    HomeComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

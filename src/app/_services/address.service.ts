@@ -4,7 +4,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { Address } from './address';
+import { Address } from '../_models/address';
+
 import { MessageService } from './message.service';
 
 const httpOptions = {
