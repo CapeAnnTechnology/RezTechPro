@@ -13,6 +13,7 @@ import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 
+import { BusinessComponent } from './business';
 import { VenueComponent } from './venue';
 import { UserComponent, UserAddComponent } from './user';
 
@@ -40,12 +41,11 @@ import { AlertService, AuthenticationService, UserService } from './_services';
 import { PhonePipe } from './_pipes';
 import { InMemoryDataService }  from './_services/in-memory-data.service';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
     AlertComponent,
+    BusinessComponent,
     FooterComponent,
     HomeComponent,    
     LoginComponent,
@@ -53,7 +53,8 @@ import { InMemoryDataService }  from './_services/in-memory-data.service';
     RegisterComponent,    
     UserComponent,
     UserAddComponent,    
-    VenueComponent,    
+    VenueComponent,
+
     // MessagesComponent,
     // DashboardComponent,
     // UserDetailComponent,

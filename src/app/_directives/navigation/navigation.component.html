@@ -1,24 +1,24 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/"><fa name="home"></fa> Home</a>
+  <a class="navbar-brand" routerLink="" routerLinkActive="active"><fa name="home"></fa> Home</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/dashboard"><fa name="tachometer"></fa> Dashboard</a>
+      <li class="nav-item active" routerLinkActive="active">
+        <a class="nav-link" routerLink="/dashboard" ><fa name="tachometer"></fa> Dashboard</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/users"><fa name="user"></fa> Users</a>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/users" ><fa name="user"></fa> Users</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#"><fa name="building"></fa> Businesses</a>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/businesses" ><fa name="building"></fa> Businesses</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/venues"><fa name="glass"></fa> Venues</a>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/venues" ><fa name="glass"></fa> Venues</a>
       </li>
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown" routerLinkActive="active">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <fa name="file-text"></fa> Reports
         </a>
@@ -29,7 +29,7 @@
           <a class="dropdown-item" href="#">Something else here</a>
         </div>
       </li>
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown" routerLinkActive="active">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <fa name="plus"></fa> Add New
         </a>
