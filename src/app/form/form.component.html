@@ -1,37 +1,53 @@
-<h2>Venue Forms</h2>
-<table class="forms table">
-	<thead>
-		<tr>
+<div class="row">
+	<div class="col-12">
+		<div class="d-flex justify-content-between">
+			<h1>Forms</h1>
+			<div>
+				<a routerLink="/form/add" class="btn btn-large btn-success"><fa name="check-square-o"></fa> Add New Form</a>
+			</div>
 			
-			<td>Form</td>
-			<td>Actions</td>
-			<td>Date Created</td>
-			<td>Uploader</td>
-		</tr>
-	</thead>
-	<tbody>
-	  <tr class="" *ngFor="let form of forms">
-	  	<td>
-		    <a routerLink="/form/{{form.id}}">
-		      <fa name="check-square-o"></fa> {{form.name}}
-		    </a>
-		</td>
-		<td>    
-		    <a routerLink="/form/{{form.id}}" class="btn btn-primary btn-sm"><fa name="eye"></fa></a>
-		    <a routerLink="/form/{{form.id}}" class="btn btn-danger btn-sm"><fa name="trash"></fa></a>
-		    <a routerLink="/form/{{form.id}}" class="btn btn-success btn-sm"><fa name="pencil"></fa></a>
+		</div>
+	</div>
+	<div class="col-12">
+		<table class="forms table">
+			<thead>
+				<tr>
+					
+					<td>Form</td>					
+					<td>Venue</td>
+					<td>Date Created</td>
+					<td>Uploader</td>
+					<td>Actions</td>
+				</tr>
+			</thead>
+			<tbody>
+			  <tr class="" *ngFor="let form of forms">
+			  	<td>
+				    <a routerLink="/form/{{form.id}}">
+				      <fa name="check-square-o"></fa> {{form.name}}
+				    </a>
+				</td>
+				<td>
+			    	{{form.venue}}
+				</td>
+			    <td>
+			    	{{form.createdAt}}
+				</td>
+				<td>
+			  		<a routerLink="/user/{{form.user.id}}">
+				  		<img src="https://randomuser.me/api/portraits/{{form.user.gender}}/{{form.user.id}}.jpg" class="avatar" />
+				  		{{form.user.firstName}} {{form.user.lastName}}
+				  	</a>
+				</td>
+				<td>    
+				    <a routerLink="/form/{{form.id}}" class="btn btn-primary btn-sm"><fa name="eye"></fa></a>
+				    <a routerLink="/form/{{form.id}}" class="btn btn-danger btn-sm"><fa name="trash"></fa></a>
+				    <a routerLink="/form/{{form.id}}" class="btn btn-success btn-sm"><fa name="pencil"></fa></a>
 
-	    </td>
-	    <td>
-	    	{{form.createdAt}}
-		</td>
-		<td>
-	  		<a routerLink="/user/{{form.user.id}}">
-		  		<img src="https://randomuser.me/api/portraits/{{form.user.gender}}/{{form.user.id}}.jpg" class="avatar" />
-		  		{{form.user.firstName}} {{form.user.lastName}}
-		  	</a>
-		</td>
-		
-	  </tr>
-  </tbody>
-</table>
+			    </td>
+				
+			  </tr>
+		  </tbody>
+		</table>
+	</div>
+</div>

@@ -14,6 +14,7 @@ import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 
 import { BusinessComponent } from './business';
+import { FormComponent } from './form';
 import { VenueComponent } from './venue';
 import { UserComponent, UserAddComponent } from './user';
 
@@ -29,7 +30,7 @@ import { AlertService, AuthenticationService, UserService } from './_services';
 
 // import { AddressComponent } from './address/address.component';
 // import { DashboardComponent } from './dashboard/dashboard.component';
-// import { FormComponent } from './form/form.component';
+
 // import { FormDetailComponent } from './form-detail/form-detail.component';
 // import { MessagesComponent } from './messages/messages.component';
 // import { NavigationComponent } from './navigation';
@@ -47,12 +48,13 @@ import { InMemoryDataService }  from './_services/in-memory-data.service';
     AlertComponent,
     BusinessComponent,
     FooterComponent,
+    FormComponent,
     HomeComponent,    
     LoginComponent,
     NavigationComponent,
     RegisterComponent,    
     UserComponent,
-    UserAddComponent,    
+        UserAddComponent,    
     VenueComponent,
 
     // MessagesComponent,
@@ -60,8 +62,7 @@ import { InMemoryDataService }  from './_services/in-memory-data.service';
     // UserDetailComponent,
     // VenueDetailComponent,
     // PhonePipe,
-    // AddressComponent,
-    // FormComponent,
+    // AddressComponent,    
     // FormDetailComponent,
     
     

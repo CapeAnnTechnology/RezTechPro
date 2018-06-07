@@ -25,16 +25,12 @@ export class FormService {
     ) { }
 
   /** GET forms from the server */
-  getForms(id: number): Observable<Form[]> {
-    const url = `${this.formsUrl}/?venueID=${id}`;
-    return this.http.get<Form[]>(url).pipe(
-    	tap(h => {
-          const outcome = h ? `fetched` : `did not find`;
-          this.log(`${outcome} form venue id=${id}`);
-        }),
-        catchError(this.handleError<Form[]>(`getForms id=${id}`))        
-
-    );
+  getForms(): Observable<Form[]> {
+    return this.http.get<Form[]>(this.formsUrl)
+      .pipe(
+        tap(forms => this.log(`fetched forms`)),
+        catchError(this.handleError('getForms', []))
+      );
   }
 
   /** GET form by id. Return `undefined` when id not found */

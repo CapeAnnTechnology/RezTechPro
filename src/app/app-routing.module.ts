@@ -1,6 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
 
 import { BusinessComponent } from './business';
+import { FormComponent } from './form';
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
@@ -16,6 +17,7 @@ const appRoutes: Routes = [
     { path: 'register', component: RegisterComponent },
 
     { path: 'businesses', component: BusinessComponent, canActivate: [AuthGuard] },
+    { path: 'forms', component: FormComponent, canActivate: [AuthGuard] },
     { path: 'venues', component: VenueComponent, canActivate: [AuthGuard] },
     { path: 'users', component: UserComponent, canActivate: [AuthGuard] },
     { path: 'user/add', component: UserAddComponent, canActivate: [AuthGuard] },

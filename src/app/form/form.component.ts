@@ -2,9 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { Form } from '../_models/form';
+import { Form } from '../_models';
 
-import { FormService } from '../_services/form.service';
+import { FormService } from '../_services';
 
 import { Title } from '@angular/platform-browser';
 
@@ -30,8 +30,7 @@ export class FormComponent implements OnInit {
 	}
 
 	getForms(): void {
-	    const id = +this.route.snapshot.paramMap.get('id');
-	    this.formService.getForms(id)
+	    this.formService.getForms()
 	      .subscribe(forms => this.forms = forms);
 	  }
 
