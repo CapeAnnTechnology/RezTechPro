@@ -5,7 +5,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
-// import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { AppComponent } from './app.component';
 import { routing } from './app-routing.module';
@@ -14,6 +14,7 @@ import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 
 import { VenueComponent } from './venue';
+import { UserComponent, UserAddComponent } from './user';
 
 import { AlertComponent, NavigationComponent, FooterComponent } from './_directives';
 
@@ -36,8 +37,9 @@ import { AlertService, AuthenticationService, UserService } from './_services';
 
 // import { VenueDetailComponent } from './venue-detail/venue-detail.component';
 
-// import { PhonePipe } from './_pipes';
-// import { InMemoryDataService }  from './_services/in-memory-data.service';
+import { PhonePipe } from './_pipes';
+import { InMemoryDataService }  from './_services/in-memory-data.service';
+
 
 
 @NgModule({
@@ -49,12 +51,12 @@ import { AlertService, AuthenticationService, UserService } from './_services';
     LoginComponent,
     NavigationComponent,
     RegisterComponent,    
+    UserComponent,
+    UserAddComponent,    
     VenueComponent,    
     // MessagesComponent,
     // DashboardComponent,
-    // UserComponent,
     // UserDetailComponent,
-    // VenueComponent,
     // VenueDetailComponent,
     // PhonePipe,
     // AddressComponent,
@@ -74,9 +76,9 @@ import { AlertService, AuthenticationService, UserService } from './_services';
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
-    // HttpClientInMemoryWebApiModule.forRoot(
-    //  InMemoryDataService, { dataEncapsulation: false }
-    //),
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false }
+    ),
     
     
 

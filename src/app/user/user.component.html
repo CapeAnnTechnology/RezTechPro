@@ -1,3 +1,30 @@
-<p>
-  user works!
-</p>
+<div class="row">
+	<div class="col-12">
+		<div class="d-flex justify-content-between">
+			<h1>Users</h1>
+			<div>
+				<a routerLink="/user/add" class="btn btn-large btn-success"><fa name="user"></fa> Add New User</a>
+			</div>
+			
+		</div>
+	</div>
+	<div class="col-12">
+		<table class="table">
+			<thead>
+				<tr><th>Username</th><th>First Name</th><th>Last Name</th><th>Positions</th><th>Action</th></tr>
+			</thead>
+			<tbody>
+			    <tr *ngFor="let user of users; let i = index">
+			    	<td>{{user.username}}</td>
+			    	<td>{{user.firstName}}</td>
+			    	<td>{{user.lastName}}</td>
+			    	<td>{{user.positions}}</td>
+			    	<td>
+			    		<a routerLink="/user/edit/{{user.id}}" class="btn btn-sm btn-primary mr-2" tabindex="{{i*10}}" title="Edit User {{user.firstName}} {{user.lastName}}"><fa name="pencil"></fa> Edit</a>
+			    		<a (click)="deleteUser(user.id)" class="btn btn-sm btn-danger" tabindex="{{(i*10)+1}}" title="Delete User {{user.firstName}} {{user.lastName}}"><fa name="trash"></fa> Delete</a>
+			    	</td>	
+			    </tr>
+			</tbody>
+		</table>
+	</div>
+</div>

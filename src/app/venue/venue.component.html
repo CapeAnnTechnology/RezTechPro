@@ -1,3 +1,31 @@
-<p>
-  venue works!
-</p>
+<div class="row">
+    <div class="col-sm">
+      <h2>All Venues</h2>
+    </div>
+  </div><!-- end row -->
+  <div class="row">
+  <div *ngFor="let venue of venues" class="col-sm">
+    <div class="">
+      <a routerLink="/venue/{{venue.id}}">
+        <div class="module venue">
+          <h4>{{venue.businessName}}</h4>
+          <p>{{venue.address.streetAddress}}<br/>
+             {{venue.address.city}}, {{venue.address.state}}</p>
+        </div>    
+      </a>
+    </div>
+    <div class="mt-1">
+      <div class="btn-group d-flex" role="group" aria-label="quick links">
+        <a routerLink="/forms/venue/{{venue.id}}" class="btn btn-success w-100"><fa name="check-square-o"></fa></a>
+      </div>
+    </div>
+    <div class="mt-1">
+      <div class="btn-group d-flex" role="group" aria-label="quick links">
+        <a href="tel:{{venue.phoneNumber}}" class="btn btn-secondary w-100"><fa name="phone"></fa></a>
+        <a href="tel:{{venue.faxNumber}}" class="btn btn-secondary w-100"><fa name="fax"></fa></a>
+        <a href="https://www.google.com/maps/search/?api=1&query=essex%20ma" class="btn btn-secondary w-100"><fa name="map-o"></fa></a>
+        <a href="#" class="btn btn-secondary w-100"><fa name="pencil"></fa> </a>
+        <a href="#" class="btn btn-secondary w-100"><fa name="trash"></fa></a>
+      </div>
+    </div>
+  </div>

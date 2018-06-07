@@ -12,9 +12,9 @@ export class InMemoryDataService implements InMemoryDbService {
     ];
 
     const venues = [
-      {id: 1, businessName: 'John\'s Bar', addressID: 1, phoneNumber: '9785551212', faxNumber: '9785551222', createdAt: '12:45pm 06/03/2018', createdBy: '-1'},
-      {id: 2, businessName: 'Jack\'s Bar', addressID: 2, phoneNumber: '9785551212', faxNumber: '9785551222', createdAt: '12:45pm 06/03/2018', createdBy: '-1'},
-      {id: 3, businessName: 'Jose\'s Hideaway', addressID: 3, phoneNumber: '9785551212', faxNumber: '9785551222', createdAt: '12:45pm 06/03/2018', createdBy: '-1'},     
+      {id: 1, businessName: 'John\'s Bar', addressID: 1, phoneNumber: '9785559282', faxNumber: '9785556543', address: {id: 1, streetAddress: '123 Main St.', city: 'Danvers', state: 'MA', zipCode: '01928', createdAt: '12:52pm 06/04/2018', createdBy: 1}, createdAt: '12:45pm 06/03/2018', createdBy: '-1'},
+      {id: 2, businessName: 'Jack\'s Bar', addressID: 2, phoneNumber: '97855592812', faxNumber: '9785551232', address: {id: 2, streetAddress: '1759 Columbia Mine Road', city: 'Peabody', state: 'MA', zipCode: '01928', createdAt: '12:52pm 06/04/2018', createdBy: 1}, createdAt: '12:45pm 06/03/2018', createdBy: '-1'},
+      {id: 3, businessName: 'Jose\'s Hideaway', addressID: 3, phoneNumber: '9785554321', faxNumber: '9785557622', address: {id: 3, streetAddress: '4741 Poplar Chase Lane', city: 'Salem', state: 'MA', zipCode: '01928', createdAt: '12:52pm 06/04/2018', createdBy: 1}, createdAt: '12:45pm 06/03/2018', createdBy: '-1'},     
     ];
 
     const addresses = [
