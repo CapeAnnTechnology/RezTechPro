@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-
 import { AlertService, UserService } from '../../_services';
 
 @Component({
@@ -11,7 +10,6 @@ import { AlertService, UserService } from '../../_services';
   styleUrls: ['./add.component.scss']
 })
 export class UserAddComponent implements OnInit {
-    
     registerForm: FormGroup;
     loading = false;
     submitted = false;
@@ -48,7 +46,7 @@ export class UserAddComponent implements OnInit {
             .subscribe(
                 data => {
                     this.alertService.success('Registration successful', true);
-                    this.router.navigate(['/login']);
+                    this.router.navigate(['/users']);
                 },
                 error => {
                     this.alertService.error(error);

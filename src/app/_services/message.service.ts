@@ -4,19 +4,18 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class MessageService {
-  messages: object[] = [];
- 
+ messages: object[] = [];
+
   add(message: string) {
-    var style = "alert-primary";
-    var messageArray = { text: message, style: style};
+    const messageArray = { text: message, style: 'alert-primary'};
     this.messages.push(messageArray);
   }
 
   addWithStyle(message: string, style: string) {
-    var messageArray = { text: message, style: style};
-  	this.messages.push(messageArray);
+    const messageArray = { text: message, style: style};
+    this.messages.push(messageArray);
   }
- 
+
   clear() {
     this.messages = [];
   }

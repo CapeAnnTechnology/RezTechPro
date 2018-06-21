@@ -3,7 +3,14 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  SSO_URI: 'https://reztechpro-sso.herokuapp.com/',
+  API_URI: 'http://10.211.55.5:3000/v2.0/',
+  BASE_API: 'http://10.211.55.5:3000/v2.0/',
+  BASE_URI: 'http://10.211.55.5:4200',
+  AUTH0_CLIENT_DOMAIN: 'reztechpro.auth0.com',
+  AUTH0_CLIENT_ID: 'SJLqm1Itq4vSMmc8NhEl59AgV5zVAHTu',
+  NAMESPACE: 'https://reztechpro.com/roles'
 };
 
 /*

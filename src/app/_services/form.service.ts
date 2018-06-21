@@ -1,12 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-
 import { User } from '../_models/user';
 import { Form } from '../_models/form';
-
 import { MessageService } from './message.service';
 
 const httpOptions = {
@@ -71,10 +68,10 @@ export class FormService {
   //////// Save methods //////////
 
   /** POST: add a new Form to the server */
-  addForm (Form: Form): Observable<Form> {
-    return this.http.post<Form>(this.formsUrl, Form, httpOptions).pipe(
-      tap((Form: Form) => this.log(`added Form w/ id=${Form.id}`)),
-      catchError(this.handleError<Form>('addForm'))
+  addForm ( Form: Form ): Observable<Form> {
+    return this.http.post<Form>( this.formsUrl, Form, httpOptions ).pipe(
+      tap( ( Form: Form ) => this.log( `added Form w/ id=${Form.id}` ) ),
+      catchError( this.handleError<Form>('addForm') )
     );
   }
 
@@ -120,5 +117,5 @@ export class FormService {
   /** Log a FormService message with the MessageService */
   private log(message: string) {
     this.messageService.add('FormService: ' + message);
-  }  
+  }
 }

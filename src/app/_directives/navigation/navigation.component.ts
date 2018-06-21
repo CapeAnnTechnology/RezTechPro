@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { first } from 'rxjs/operators';
+import { User } from '../../_models';
+import { UserService } from '../../_services';
 
 @Component({
   selector: 'navigation',
@@ -6,10 +9,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent implements OnInit {
+ users: User[] = [];
 
-  constructor() { }
+ constructor(private userService: UserService) { }
 
-  ngOnInit() {
-  }
+ ngOnInit() {
+  this.loadAllUsers();
+ }
+
+ private loadAllUsers() {
+  this.userService.getUsers(10).pipe(first()).subscribe(users => {
+  this.users = users;
+ });
+ }
 
 }

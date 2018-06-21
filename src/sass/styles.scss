@@ -1,3 +1,11 @@
+/* src/sass/styles.scss */
+// partials
+@import "partials/layout.vars";
+@import "partials/responsive.partial";
+
+// global styles
+@import "base";
+
 /*!
  * Bootstrap v4.1.1 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
@@ -31,11 +39,3 @@
 @import "utilities";
 @import "print";
 @import "alert";
-
-body {
-	background: #232323;
-
-	.page {
-		background: #fff;
-	}
-}

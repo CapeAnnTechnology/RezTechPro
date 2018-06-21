@@ -9,8 +9,13 @@
       <!-- <li class="nav-item active" routerLinkActive="active">
         <a class="nav-link" routerLink="/dashboard" ><fa name="tachometer"></fa> Dashboard</a>
       </li> -->
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/users" ><fa name="user"></fa> Users</a>
+      <li class="nav-item dropdown" routerLinkActive="active">
+        <a class="nav-link  dropdown-toggle" routerLink="/users" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><fa name="user"></fa> Users</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
+          <div *ngFor="let user of users; let i = index">
+            <a class="dropdown-item" routerLink="/user/login/{{user.id}}">{{user.firstName}} {{user.lastName}}</a>
+          </div>
+        </div>
       </li>
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" routerLink="/businesses" ><fa name="building"></fa> Businesses</a>

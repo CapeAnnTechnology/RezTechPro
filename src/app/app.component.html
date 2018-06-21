@@ -1,9 +1,20 @@
-<navigation></navigation>
-<!-- main app container -->
-<div class="jumbotron page">
-    <div class="container py-5">
-        <alert></alert>
-        <router-outlet></router-outlet>        
+<!-- src/app/app.component.html -->
+<div class="layout-overflow">
+  <div
+    class="layout-canvas"
+    [ngClass]="{ 'nav-open': navOpen, 'nav-closed': !navOpen }"
+    [style.min-height]="minHeight">
+
+    <!-- HEADER -->
+    <app-header (navToggled)="navToggledHandler($event)"></app-header>
+
+    <!-- CONTENT -->
+    <div id="layout-view" class="layout-view">
+      <router-outlet></router-outlet>
     </div>
-</div>
-<footer></footer>
+
+    <!-- FOOTER -->
+    <app-footer></app-footer>
+
+  </div> <!-- /.layout-canvas -->
+</div> <!-- /.layout-overflow -->

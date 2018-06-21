@@ -20,6 +20,7 @@
 			    	<td>{{user.lastName}}</td>
 			    	<td>{{user.positions}}</td>
 			    	<td>
+			    		<a routerLink="/user/login/{{user.id}}" class="btn btn-sm btn-success mr-2" tabindex="{{i*10}}" title="Login As User {{user.firstName}} {{user.lastName}}"><fa name="user"></fa> Login As</a>
 			    		<a routerLink="/user/edit/{{user.id}}" class="btn btn-sm btn-primary mr-2" tabindex="{{i*10}}" title="Edit User {{user.firstName}} {{user.lastName}}"><fa name="pencil"></fa> Edit</a>
 			    		<a (click)="deleteUser(user.id)" class="btn btn-sm btn-danger" tabindex="{{(i*10)+1}}" title="Delete User {{user.firstName}} {{user.lastName}}"><fa name="trash"></fa> Delete</a>
 			    	</td>	

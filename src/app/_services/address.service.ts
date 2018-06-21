@@ -1,11 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-
 import { Address } from '../_models/address';
-
 import { MessageService } from './message.service';
 
 const httpOptions = {
@@ -30,7 +27,7 @@ export class AddressService {
         catchError(this.handleError('getAddresses', []))
       );
   }
-  
+
     /**
    * Handle Http operation that failed.
    * Let the app continue.
@@ -54,6 +51,6 @@ export class AddressService {
   /** Log a AddressService message with the MessageService */
   private log(message: string) {
     this.messageService.addWithStyle('AddressService: ' + message, 'alert-success');
-  } 
+  }
 
 }
