@@ -18,7 +18,7 @@ export class ChecklistService {
     return `Bearer ${this.auth.accessToken}`;
   }
 
-  // GET list of public, future events
+  // GET list of public, future checklists
   getChecklists$(): Observable<ChecklistModel[]> {
     return this.http
       .get<ChecklistModel[]>(`${environment.BASE_API}checklists`)
@@ -27,7 +27,7 @@ export class ChecklistService {
       );
   }
 
-  // GET all events - private and public (admin only)
+  // GET all checklists - private and public (admin only)
   getAdminChecklists$(): Observable<ChecklistModel[]> {
     return this.http
       .get<ChecklistModel[]>(`${environment.BASE_API}checklists/admin`, {

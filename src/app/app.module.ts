@@ -29,6 +29,7 @@ import { PhonePipe } from './_pipes';
 
 import { AlertService,
          AuthenticationService,
+         ChecklistService,
          UserService,
          VenueService,
          BusinessService,
@@ -36,7 +37,7 @@ import { AlertService,
          EventService,
          UtilityService,
          FilterService,
-         SortService } from './_services';
+         SortService, } from './_services';
 import { HeaderComponent } from './_directives/header/header.component';
 import { CallbackComponent } from './callback/callback.component';
 import { LoadingComponent } from './_directives/loading/loading.component';
@@ -49,8 +50,6 @@ import { LoadingComponent } from './_directives/loading/loading.component';
 // import { NavigationComponent } from './navigation';
 // import { UserComponent } from './user/user.component';
 // import { UserDetailComponent } from './user-detail/user-detail.component';
-
-
 
 @NgModule({
   declarations: [
@@ -70,7 +69,7 @@ import { LoadingComponent } from './_directives/loading/loading.component';
         VenueDetailComponent,
     HeaderComponent,
     CallbackComponent,
-    LoadingComponent
+    LoadingComponent,
   ],
   imports: [
     AngularFontAwesomeModule,
@@ -86,11 +85,12 @@ import { LoadingComponent } from './_directives/loading/loading.component';
         AuthGuard,
         AuthService,
         BusinessService,
+        ChecklistService,
         DatePipe,
         EventService,
         Title,
         UserService,
-        UtilityService
+        UtilityService,
         VenueService,
         FilterService,
         SortService,

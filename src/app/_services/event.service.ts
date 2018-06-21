@@ -4,7 +4,7 @@ import { AuthService } from './auth.service';
 import { throwError as ObservableThrowError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
-import { EventModel, RsvpModel } from '../models';
+import { EventModel, RsvpModel } from '../_models';
 
 @Injectable()
 export class EventService {

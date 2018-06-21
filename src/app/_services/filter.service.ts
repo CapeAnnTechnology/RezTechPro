@@ -18,7 +18,7 @@ export class FilterService {
     return check;
   }
 
-  search(array: any[], query: string, 
+  search(array: any[], query: string,
   	excludeProps?: string|string[], dateFormat?: string) {
     // Match query to strings and Date objects / ISO UTC strings
     // Optionally exclude properties from being searched
