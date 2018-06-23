@@ -1,27 +1,27 @@
 import { Injectable } from '@angular/core';
-import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { environment } from '../../environments/environment';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Observable } from 'rxjs';
+import { AuthService } from '../_services';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-    constructor(private router: Router) { }
+  constructor(private auth: AuthService) { }
 
-    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        if (localStorage.getItem('currentUser')) {
-            // logged in so return true
-            return true;
-        }
-
-        // not logged in so redirect to login page with the return url
-        // process.env.SSO_URI
-        this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
-
-        // this.router.navigate([environment.SSO_URI],
-        // { queryParams: { returnUrl: state.url }});
-        // window.location.href=environment.SSO_URI;
-        // window.location.href=environment.SSO_URI+'?returnUrl='+window.location;
-
-        return false;
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<boolean> | Promise<boolean> | boolean {
+    if (!this.auth.loggedIn) {
+      localStorage.setItem('authRedirect', state.url);
     }
+    if (!this.auth.tokenValid && !this.auth.loggedIn) {
+      this.auth.login();
+      return false;
+    }
+    if (this.auth.tokenValid && this.auth.loggedIn) {
+      return true;
+    }
+  }
+
 }

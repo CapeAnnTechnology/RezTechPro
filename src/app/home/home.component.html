@@ -25,7 +25,7 @@
         <span class="input-group-append">
           <button
             class="btn btn-danger"
-            (click)="resetQuery()"
+            (click)="resetChecklistQuery()"
             [disabled]="!queryChecklists">&times;</button>
         </span>
       </div>
@@ -43,21 +43,21 @@
           class="list-group-item list-group-item-action flex-column align-items-start">
           <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1" [innerHTML]="checklist.title"></h5>
-            <small>{{ utility.eventDates(event.startDatetime, event.endDatetime) }}</small>
+            <small>{{ utility.eventDates(checklist.startDatetime, checklist.endDatetime) }}</small>
           </div>
         </a>
       </section>
     </ng-template>
 
     <!-- No upcoming public events available -->
-    <p *ngIf="!eventList.length" class="alert alert-info">
-      No upcoming public events available.
+    <p *ngIf="!checklistList.length" class="alert alert-info">
+      No upcoming public checklists available.
     </p>
   </ng-template>
 
   <!-- Error loading events -->
   <p *ngIf="error" class="alert alert-danger">
-    <strong>Oops!</strong> There was an error retrieving event data.
+    <strong>Oops!</strong> There was an error retrieving checklist data.
   </p>
 
 </ng-template>

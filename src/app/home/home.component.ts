@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit, OnDestroy {
  loading: boolean;
  error: boolean;
  query: '';
+ queryChecklists: '';
 
  constructor( private title: Title,
     public utility: UtilityService,
@@ -86,6 +87,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   resetQuery() {
     this.query = '';
     this.filteredEvents = this.eventList;
+  }
+
+  resetChecklistQuery() {
+    this.queryChecklists = '';
     this.filteredChecklists = this.checklistList;
   }
 

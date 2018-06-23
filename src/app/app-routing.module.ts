@@ -6,8 +6,9 @@ import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 import { VenueComponent, VenueDetailComponent } from './venue';
 import { UserComponent, UserAddComponent } from './user';
-import { AuthGuard } from './_guards';
+import { AuthGuard, AdminGuard } from './_guards';
 import { CallbackComponent } from './callback';
+import { AdminComponent } from './admin';
 
 
 const appRoutes: Routes = [
@@ -22,6 +23,19 @@ const appRoutes: Routes = [
  { path: 'venue/:id', component: VenueDetailComponent }, // , canActivate: [AuthGuard]
  { path: 'users', component: UserComponent }, // , canActivate: [AuthGuard]
  { path: 'user/add', component: UserAddComponent }, // , canActivate: [AuthGuard]
+ {
+    path: 'admin',
+    canActivate: [
+      AuthGuard,
+      AdminGuard
+    ],
+    children: [
+      {
+        path: '',
+        component: AdminComponent
+      }
+    ]
+  },
  // otherwise redirect to home
  { path: '**', redirectTo: '' }
 ];

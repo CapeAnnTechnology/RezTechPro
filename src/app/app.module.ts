@@ -21,7 +21,8 @@ import { AlertComponent,
          NavigationComponent,
          FooterComponent } from './_directives';
 
-import { AuthGuard } from './_guards';
+import { AuthGuard,
+         AdminGuard } from './_guards';
 
 // import { JwtInterceptor } from './_helpers';
 
@@ -41,6 +42,7 @@ import { AlertService,
 import { HeaderComponent } from './_directives/header/header.component';
 import { CallbackComponent } from './callback/callback.component';
 import { LoadingComponent } from './_directives/loading/loading.component';
+import { AdminComponent } from './admin/admin.component';
 
 // import { AddressComponent } from './address/address.component';
 // import { DashboardComponent } from './dashboard/dashboard.component';
@@ -70,6 +72,7 @@ import { LoadingComponent } from './_directives/loading/loading.component';
     HeaderComponent,
     CallbackComponent,
     LoadingComponent,
+    AdminComponent,
   ],
   imports: [
     AngularFontAwesomeModule,
@@ -84,6 +87,7 @@ import { LoadingComponent } from './_directives/loading/loading.component';
         AuthenticationService,
         AuthGuard,
         AuthService,
+        AdminGuard,
         BusinessService,
         ChecklistService,
         DatePipe,
