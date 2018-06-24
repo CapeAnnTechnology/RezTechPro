@@ -55,18 +55,20 @@ import { AddressComponent } from './address';
 import { DashboardComponent } from './dashboard';
 import { FormDetailComponent } from './form-detail';
 import { MessagesComponent } from './messages';
-import { NavigationComponent } from './_directives';
 import { UserComponent } from './user';
 import { UserDetailComponent } from './user-detail';
 
 @NgModule({
   declarations: [
     AppComponent,
+    AddressComponent,
     AlertComponent,
     BusinessComponent,
+    DashboardComponent,
     FooterComponent,
     FormComponent,
         FormAddComponent,
+        FormDetailComponent,
     HomeComponent,
     LoginComponent,
     NavigationComponent,
@@ -84,6 +86,8 @@ import { UserDetailComponent } from './user-detail';
     RsvpComponent,
     RsvpFormComponent,
     SubmittingComponent,
+    UserComponent,
+    UserDetailComponent,
     ChecklistComponent,
     ChecklistDetailComponent,
     PhonePipe,
