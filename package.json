@@ -1,6 +1,10 @@
 {
   "name": "rez-tech-pro",
-  "version": "0.0.0",
+  "version": "1.5.0",
+  "engines": {
+    "node": "10.5.x",
+    "npm": "6.1.x"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

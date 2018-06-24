@@ -97,10 +97,18 @@ export class AuthService {
   }
 
   private _redirect() {
-    const redirect = decodeURI(localStorage.getItem('authRedirect'));
-    const navArr = [redirect || '/'];
+    // Redirect with or without 'tab' query parameter
+    // Note: does not support additional params besides 'tab'
+    const fullRedirect = decodeURI(localStorage.getItem('authRedirect'));
+    const redirectArr = fullRedirect.split('?tab=');
+    const navArr = [redirectArr[0] || '/'];
+    const tabObj = redirectArr[1] ? { queryParams: { tab: redirectArr[1] }} : null;
 
-    this.router.navigate(navArr);
+    if (!tabObj) {
+      this.router.navigate(navArr);
+    } else {
+      this.router.navigate(navArr, tabObj);
+    }
     // Redirection completed; clear redirect from storage
     this._clearRedirect();
   }

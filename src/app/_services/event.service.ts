@@ -68,4 +68,26 @@ export class EventService {
     return ObservableThrowError(errorMsg);
   }
 
+  // POST new RSVP (login required)
+  postRsvp$(rsvp: RsvpModel): Observable<RsvpModel> {
+    return this.http
+      .post<RsvpModel>(`${environment.BASE_API}rsvp/new`, rsvp, {
+        headers: new HttpHeaders().set('Authorization', this._authHeader)
+      })
+      .pipe(
+        catchError((error) => this._handleError(error))
+      );
+  }
+
+  // PUT existing RSVP (login required)
+  editRsvp$(id: string, rsvp: RsvpModel): Observable<RsvpModel> {
+    return this.http
+      .put(`${environment.BASE_API}rsvp/${id}`, rsvp, {
+        headers: new HttpHeaders().set('Authorization', this._authHeader)
+      })
+      .pipe(
+        catchError((error) => this._handleError(error))
+      );
+  }
+
 }

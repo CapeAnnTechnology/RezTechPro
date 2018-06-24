@@ -1,0 +1,57 @@
+<app-loading *ngIf="loading"></app-loading>
+
+<ng-template [ngIf]="utils.isLoaded(loading)">
+  <h1 class="text-center">{{ pageTitle }}</h1>
+  <!-- Checklist -->
+  <ng-template [ngIf]="checklist">
+    <!-- Checklist is over -->
+    <!-- <p *ngIf="checklistPast" class="alert alert-danger">
+      <strong>This checklist is over.</strong>
+    </p> -->
+
+    <div class="card">
+      <!-- Checklist tab navigation -->
+      <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              [routerLink]="[]"
+              [queryParams]="{ tab: 'details' }"
+              [ngClass]="{ 'active': utils.tabIs(tab, 'details') }">Details</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a
+              class="nav-link"
+              [routerLink]="[]"
+              [queryParams]="{ tab: 'rsvp' }"
+              [ngClass]="{ 'active': utils.tabIs(tab, 'rsvp') }">RSVP</a>
+          </li> -->
+          <li class="nav-item">
+            <a
+              href="{{api_url}}checklist/{{checklist._id}}/pdf"
+              target="_BLANK"
+              class="nav-link"
+              [ngClass]="{ 'active': utils.tabIs(tab, 'pdf') }">PDF</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Checklist detail tab -->
+      <app-checklist-detail
+        *ngIf="utils.tabIs(tab, 'details')"
+        [checklist]="checklist"></app-checklist-detail>
+
+      <!-- Checklist RSVP tab -->
+      <!-- <app-rsvp
+        *ngIf="utils.tabIs(tab, 'rsvp')"
+        [checklistId]="checklist._id"
+        [checklistPast]="checklistPast"></app-rsvp> -->
+    </div>
+  </ng-template>
+
+  <!-- Error loading checklists -->
+  <p *ngIf="error" class="alert alert-danger">
+    <strong>Oops!</strong> There was an error retrieving information for this checklist.
+  </p>
+</ng-template>

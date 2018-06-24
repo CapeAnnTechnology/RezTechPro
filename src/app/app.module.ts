@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { DatePipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
@@ -43,10 +44,15 @@ import { HeaderComponent } from './_directives/header/header.component';
 import { CallbackComponent } from './callback/callback.component';
 import { LoadingComponent } from './_directives/loading/loading.component';
 import { AdminComponent } from './admin/admin.component';
+import { EventComponent } from './event/event.component';
+import { EventDetailComponent } from './event/event-detail/event-detail.component';
+import { RsvpComponent } from './event/rsvp/rsvp.component';
+import { RsvpFormComponent } from './event/rsvp/rsvp-form/rsvp-form.component';
+import { SubmittingComponent } from './_forms/submitting.component';
+import { ChecklistComponent, ChecklistDetailComponent } from './checklist';
 
 // import { AddressComponent } from './address/address.component';
 // import { DashboardComponent } from './dashboard/dashboard.component';
-
 // import { FormDetailComponent } from './form-detail/form-detail.component';
 // import { MessagesComponent } from './messages/messages.component';
 // import { NavigationComponent } from './navigation';
@@ -73,9 +79,17 @@ import { AdminComponent } from './admin/admin.component';
     CallbackComponent,
     LoadingComponent,
     AdminComponent,
+    EventComponent,
+    EventDetailComponent,
+    RsvpComponent,
+    RsvpFormComponent,
+    SubmittingComponent,
+    ChecklistComponent,
+    ChecklistDetailComponent,
   ],
   imports: [
     AngularFontAwesomeModule,
+    BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,

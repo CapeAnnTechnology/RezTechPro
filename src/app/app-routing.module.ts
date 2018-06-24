@@ -9,6 +9,8 @@ import { UserComponent, UserAddComponent } from './user';
 import { AuthGuard, AdminGuard } from './_guards';
 import { CallbackComponent } from './callback';
 import { AdminComponent } from './admin';
+import { EventComponent } from './event';
+import { ChecklistComponent } from './checklist';
 
 
 const appRoutes: Routes = [
@@ -34,6 +36,20 @@ const appRoutes: Routes = [
         path: '',
         component: AdminComponent
       }
+    ]
+  },
+  {
+    path: 'event/:id',
+    component: EventComponent,
+    canActivate: [
+      AuthGuard
+    ]
+  },
+  {
+    path: 'checklist/:id',
+    component: ChecklistComponent,
+    canActivate: [
+      AuthGuard
     ]
   },
  // otherwise redirect to home

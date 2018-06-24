@@ -38,7 +38,7 @@ export class ChecklistService {
       );
   }
 
-  // GET an event by ID (login required)
+  // GET an checklist by ID (login required)
   getChecklistById$(id: string): Observable<ChecklistModel> {
     return this.http
       .get<ChecklistModel>(`${environment.BASE_API}checklist/${id}`, {
