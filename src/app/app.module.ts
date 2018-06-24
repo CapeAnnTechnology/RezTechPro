@@ -55,7 +55,6 @@ import { AddressComponent } from './address';
 import { DashboardComponent } from './dashboard';
 import { FormDetailComponent } from './form-detail';
 import { MessagesComponent } from './messages';
-import { UserComponent } from './user';
 import { UserDetailComponent } from './user-detail';
 
 @NgModule({
@@ -86,7 +85,6 @@ import { UserDetailComponent } from './user-detail';
     RsvpComponent,
     RsvpFormComponent,
     SubmittingComponent,
-    UserComponent,
     UserDetailComponent,
     ChecklistComponent,
     ChecklistDetailComponent,
