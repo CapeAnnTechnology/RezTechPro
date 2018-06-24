@@ -51,13 +51,13 @@ import { RsvpFormComponent } from './event/rsvp/rsvp-form/rsvp-form.component';
 import { SubmittingComponent } from './_forms/submitting.component';
 import { ChecklistComponent, ChecklistDetailComponent } from './checklist';
 
-// import { AddressComponent } from './address/address.component';
-// import { DashboardComponent } from './dashboard/dashboard.component';
-// import { FormDetailComponent } from './form-detail/form-detail.component';
-// import { MessagesComponent } from './messages/messages.component';
-// import { NavigationComponent } from './navigation';
-// import { UserComponent } from './user/user.component';
-// import { UserDetailComponent } from './user-detail/user-detail.component';
+import { AddressComponent } from './address';
+import { DashboardComponent } from './dashboard';
+import { FormDetailComponent } from './form-detail';
+import { MessagesComponent } from './messages';
+import { NavigationComponent } from './_directives';
+import { UserComponent } from './user';
+import { UserDetailComponent } from './user-detail';
 
 @NgModule({
   declarations: [
