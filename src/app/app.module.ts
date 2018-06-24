@@ -86,6 +86,7 @@ import { ChecklistComponent, ChecklistDetailComponent } from './checklist';
     SubmittingComponent,
     ChecklistComponent,
     ChecklistDetailComponent,
+    PhonePipe,
   ],
   imports: [
     AngularFontAwesomeModule,
