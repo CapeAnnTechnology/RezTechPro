@@ -6,7 +6,12 @@ export class Venue {
  phoneNumber: string;
  faxNumber: string;
  addressID: number;
- address: object;
+ address: {
+ 	streetAddress: string;
+ 	secondaryAddress: string;
+ 	city: string;
+ 	state: string;
+ };
  createdAt: string;
  createdBy: string;
 }
