@@ -12,3 +12,4 @@ export * from './sort.service';
 export * from './user.service';
 export * from './utility.service';
 export * from './venue.service';
+export * from './log.service';

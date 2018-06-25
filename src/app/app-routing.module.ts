@@ -11,7 +11,7 @@ import { CallbackComponent } from './callback';
 import { AdminComponent } from './admin';
 import { EventComponent } from './event';
 import { ChecklistComponent } from './checklist';
-
+import { LogComponent } from './log';
 
 const appRoutes: Routes = [
  { path: '', component: HomeComponent }, // , canActivate: [AuthGuard]
@@ -35,6 +35,19 @@ const appRoutes: Routes = [
       {
         path: '',
         component: AdminComponent
+      }
+    ]
+  },
+  {
+    path: 'logs',
+    canActivate: [
+      AuthGuard,
+      AdminGuard
+    ],
+    children: [
+      {
+        path: '',
+        component: LogComponent
       }
     ]
   },

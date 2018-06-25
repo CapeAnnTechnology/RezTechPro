@@ -1,21 +1,21 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { AuthService, EventService, FilterService, UtilityService } from '../_services';
+import { AuthService, LogService, FilterService, UtilityService } from '../_services';
 import { Subscription } from 'rxjs';
-import { EventModel } from '../_models';
+import { LogModel } from '../_models';
 import { NGXLogger } from 'ngx-logger';
 
 @Component({
   selector: 'app-admin',
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss'],
+  templateUrl: './log.component.html',
+  styleUrls: ['./log.component.scss'],
   providers: [NGXLogger]
 })
-export class AdminComponent implements OnInit, OnDestroy {
-  pageTitle = 'Admin';
-  eventsSub: Subscription;
-  eventList: EventModel[];
-  filteredEvents: EventModel[];
+export class LogComponent implements OnInit, OnDestroy {
+  pageTitle = 'Logs';
+  logsSub: Subscription;
+  logList: LogModel[];
+  filteredLogs: LogModel[];
   loading: boolean;
   error: boolean;
   query = '';
@@ -23,29 +23,29 @@ export class AdminComponent implements OnInit, OnDestroy {
   constructor(
     private title: Title,
     public auth: AuthService,
-    private event: EventService,
+    private log: LogService,
     public utils: UtilityService,
     public fs: FilterService,
     private logger: NGXLogger
   ) {
 
-    this.logger.log('Viewing Admin Events');
+    // this.logger.log('Viewing Admin Logs');
   }
 
   ngOnInit() {
     this.title.setTitle(this.pageTitle);
-    this._getEventList();
+    this._getLogList();
   }
 
-  private _getEventList() {
+  private _getLogList() {
     this.loading = true;
-    // Get all (admin) events
-    this.eventsSub = this.event
-      .getAdminEvents$()
+    // Get all (admin) logs
+    this.logsSub = this.log
+      .getLogs$()
       .subscribe(
         res => {
-          this.eventList = res;
-          this.filteredEvents = res;
+          this.logList = res;
+          this.filteredLogs = res;
           this.loading = false;
         },
         err => {
@@ -56,17 +56,17 @@ export class AdminComponent implements OnInit, OnDestroy {
       );
   }
 
-  searchEvents() {
-    this.filteredEvents = this.fs.search(this.eventList, this.query, '_id', 'mediumDate');
+  searchLogs() {
+    this.filteredLogs = this.fs.search(this.logList, this.query, '_id', 'mediumDate');
   }
 
   resetQuery() {
     this.query = '';
-    this.filteredEvents = this.eventList;
+    this.filteredLogs = this.logList;
   }
 
   ngOnDestroy() {
-    this.eventsSub.unsubscribe();
+    this.logsSub.unsubscribe();
   }
 
 }

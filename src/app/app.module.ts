@@ -39,16 +39,15 @@ import { AlertService,
          EventService,
          UtilityService,
          FilterService,
-         SortService, } from './_services';
+         SortService,
+         LogService, } from './_services';
 import { HeaderComponent } from './_directives/header/header.component';
 import { CallbackComponent } from './callback/callback.component';
 import { LoadingComponent } from './_directives/loading/loading.component';
-import { AdminComponent } from './admin/admin.component';
-import { EventComponent } from './event/event.component';
-import { EventDetailComponent } from './event/event-detail/event-detail.component';
-import { RsvpComponent } from './event/rsvp/rsvp.component';
-import { RsvpFormComponent } from './event/rsvp/rsvp-form/rsvp-form.component';
-import { SubmittingComponent } from './_forms/submitting.component';
+import { AdminComponent } from './admin';
+import { EventComponent, EventDetailComponent, RsvpComponent, RsvpFormComponent } from './event';
+import { LogComponent } from './log';
+
 import { ChecklistComponent, ChecklistDetailComponent } from './checklist';
 
 import { AddressComponent } from './address';
@@ -59,7 +58,10 @@ import { UserDetailComponent } from './user-detail';
 
 import { environment } from '../environments/environment';
 
+import { SubmittingComponent } from './_forms';
+
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
+
 
 
 @NgModule({
@@ -82,6 +84,7 @@ import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
     HeaderComponent,
     HomeComponent,
     LoadingComponent,
+    LogComponent,
     LoginComponent,
     MessagesComponent,
     NavigationComponent,
@@ -122,6 +125,7 @@ import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
         EventService,
         Title,
         UserService,
+        LogService,
         UtilityService,
         VenueService,
         FilterService,

@@ -32,7 +32,14 @@
           *ngIf="auth.loggedIn && auth.isAdmin"
           routerLink="/admin"
           routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }">Admin</a>
+          [routerLinkActiveOptions]="{ exact: true }">Admin Events</a>
+      </li>
+      <li>
+        <a
+          *ngIf="auth.loggedIn && auth.isAdmin"
+          routerLink="/logs"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }">Admin Logs</a>
       </li>
     </ul>
   </nav>
