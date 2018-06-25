@@ -7,6 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
+import { AuthModule } from './auth';
+import { CoreModule } from './core';
+
 import { AppComponent } from './app.component';
 import { routing } from './app-routing.module';
 import { HomeComponent } from './home';
@@ -19,8 +22,7 @@ import { VenueComponent, VenueDetailComponent } from './venue';
 import { UserComponent, UserAddComponent } from './user';
 
 import { AlertComponent,
-         NavigationComponent,
-         FooterComponent } from './_directives';
+         NavigationComponent } from './_directives';
 
 import { AuthGuard,
          AdminGuard } from './_guards';
@@ -41,14 +43,13 @@ import { AlertService,
          FilterService,
          SortService,
          LogService, } from './_services';
-import { HeaderComponent } from './_directives/header/header.component';
+
 import { CallbackComponent } from './callback/callback.component';
-import { LoadingComponent } from './_directives/loading/loading.component';
-import { AdminComponent } from './admin';
-import { EventComponent, EventDetailComponent, RsvpComponent, RsvpFormComponent } from './event';
+
 import { LogComponent } from './log';
 
-import { ChecklistComponent, ChecklistDetailComponent } from './checklist';
+import { ChecklistComponent,
+         ChecklistDetailComponent } from './checklist';
 
 import { AddressComponent } from './address';
 import { DashboardComponent } from './dashboard';
@@ -58,16 +59,14 @@ import { UserDetailComponent } from './user-detail';
 
 import { environment } from '../environments/environment';
 
-import { SubmittingComponent } from './_forms';
-
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
+import { MyRsvpsComponent } from './my-rsvps/my-rsvps.component';
 
 
 
 @NgModule({
   declarations: [
     AddressComponent,
-    AdminComponent,
     AlertComponent,
     AppComponent,
     BusinessComponent,
@@ -75,29 +74,23 @@ import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
     ChecklistComponent,
       ChecklistDetailComponent,
     DashboardComponent,
-    EventComponent,
-    EventDetailComponent,
-    FooterComponent,
     FormAddComponent,
       FormComponent,
       FormDetailComponent,
-    HeaderComponent,
     HomeComponent,
-    LoadingComponent,
     LogComponent,
     LoginComponent,
     MessagesComponent,
+    MyRsvpsComponent,
     NavigationComponent,
     PhonePipe,
     RegisterComponent,
-    RsvpComponent,
-    RsvpFormComponent,
-    SubmittingComponent,
     UserAddComponent,
       UserComponent,
       UserDetailComponent,
     VenueComponent,
       VenueDetailComponent,
+
   ],
   imports: [
     AngularFontAwesomeModule,
@@ -111,6 +104,8 @@ import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
                            level: NgxLoggerLevel.DEBUG,
                            serverLogLevel: NgxLoggerLevel.LOG
                          }),
+    AuthModule.forRoot(),
+    CoreModule.forRoot(),
 
   ],
   providers: [

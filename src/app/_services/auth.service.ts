@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
-import { AUTH_CONFIG } from '../auth/auth.config';
+import { BehaviorSubject, Subscription, of, timer } from 'rxjs';
+import { mergeMap } from 'rxjs/operators';
 import * as auth0 from 'auth0-js';
 import { environment } from '../../environments/environment';
+import { AUTH_CONFIG } from '../auth/auth.config';
 
 @Injectable()
 export class AuthService {
@@ -24,6 +25,8 @@ export class AuthService {
   loggedIn$ = new BehaviorSubject<boolean>(this.loggedIn);
   loggingIn: boolean;
   isAdmin: boolean;
+  // Subscribe to token expiration stream
+  refreshSub: Subscription;
 
   constructor(private router: Router) {
     // If app auth token is not expired, request new token
@@ -83,6 +86,8 @@ export class AuthService {
     // Update login status in loggedIn$ stream
     this.setLoggedIn(true);
     this.loggingIn = false;
+    // Schedule access token renewal
+    this.scheduleRenewal();
   }
 
   private _checkAdmin(profile) {
@@ -143,6 +148,38 @@ export class AuthService {
         this._clearExpiration();
       }
     });
+  }
+
+  scheduleRenewal() {
+    // If last token is expired, do nothing
+    if (!this.tokenValid) { return; }
+    // Unsubscribe from previous expiration observable
+    this.unscheduleRenewal();
+    // Create and subscribe to expiration observable
+    const expiresIn$ = of(this.expiresAt).pipe(
+      mergeMap(
+        expires => {
+          const now = Date.now();
+          // Use timer to track delay until expiration
+          // to run the refresh at the proper time
+          return timer(Math.max(1, expires - now));
+        }
+      )
+    );
+
+    this.refreshSub = expiresIn$
+      .subscribe(
+        () => {
+          this.renewToken();
+          this.scheduleRenewal();
+        }
+      );
+  }
+
+  unscheduleRenewal() {
+    if (this.refreshSub) {
+      this.refreshSub.unsubscribe();
+    }
   }
 
 }

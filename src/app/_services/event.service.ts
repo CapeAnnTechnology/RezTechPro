@@ -49,6 +49,39 @@ export class EventService {
       );
   }
 
+  // POST new event (admin only)
+  postEvent$(event: EventModel): Observable<EventModel> {
+    return this.http
+      .post<EventModel>(`${environment.BASE_API}event/new`, event, {
+        headers: new HttpHeaders().set('Authorization', this._authHeader)
+      })
+      .pipe(
+        catchError((error) => this._handleError(error))
+      );
+  }
+
+  // PUT existing event (admin only)
+  editEvent$(id: string, event: EventModel): Observable<EventModel> {
+    return this.http
+      .put<EventModel>(`${environment.BASE_API}event/${id}`, event, {
+        headers: new HttpHeaders().set('Authorization', this._authHeader)
+      })
+      .pipe(
+        catchError((error) => this._handleError(error))
+      );
+  }
+
+  // DELETE existing event and all associated RSVPs (admin only)
+  deleteEvent$(id: string): Observable<any> {
+    return this.http
+      .delete(`${environment.BASE_API}event/${id}`, {
+        headers: new HttpHeaders().set('Authorization', this._authHeader)
+      })
+      .pipe(
+        catchError((error) => this._handleError(error))
+      );
+  }
+
   // GET RSVPs by event ID (login required)
   getRsvpsByEventId$(eventId: string): Observable<RsvpModel[]> {
     return this.http
@@ -58,14 +91,6 @@ export class EventService {
       .pipe(
         catchError((error) => this._handleError(error))
       );
-  }
-
-  private _handleError(err: HttpErrorResponse | any): Observable<any> {
-    const errorMsg = err.message || 'Error: Unable to complete request.';
-    if (err.message && err.message.indexOf('No JWT present') > -1) {
-      this.auth.login();
-    }
-    return ObservableThrowError(errorMsg);
   }
 
   // POST new RSVP (login required)
@@ -88,6 +113,25 @@ export class EventService {
       .pipe(
         catchError((error) => this._handleError(error))
       );
+  }
+
+    // GET all events a specific user has RSVPed to (login required)
+  getUserEvents$(userId: string): Observable<EventModel[]> {
+    return this.http
+      .get<EventModel[]>(`${environment.BASE_API}events/${userId}`, {
+        headers: new HttpHeaders().set('Authorization', this._authHeader)
+      })
+      .pipe(
+        catchError((error) => this._handleError(error))
+      );
+  }
+
+  private _handleError(err: HttpErrorResponse | any): Observable<any> {
+    const errorMsg = err.message || 'Error: Unable to complete request.';
+    if (err.message && err.message.indexOf('No JWT present') > -1) {
+      this.auth.login();
+    }
+    return ObservableThrowError(errorMsg);
   }
 
 }

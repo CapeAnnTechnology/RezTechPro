@@ -8,10 +8,11 @@ import { VenueComponent, VenueDetailComponent } from './venue';
 import { UserComponent, UserAddComponent } from './user';
 import { AuthGuard, AdminGuard } from './_guards';
 import { CallbackComponent } from './callback';
-import { AdminComponent } from './admin';
-import { EventComponent } from './event';
 import { ChecklistComponent } from './checklist';
 import { LogComponent } from './log';
+
+import { MyRsvpsComponent } from './my-rsvps/my-rsvps.component';
+
 
 const appRoutes: Routes = [
  { path: '', component: HomeComponent }, // , canActivate: [AuthGuard]
@@ -27,15 +28,10 @@ const appRoutes: Routes = [
  { path: 'user/add', component: UserAddComponent }, // , canActivate: [AuthGuard]
  {
     path: 'admin',
+    loadChildren: './admin/admin.module#AdminModule',
     canActivate: [
       AuthGuard,
       AdminGuard
-    ],
-    children: [
-      {
-        path: '',
-        component: AdminComponent
-      }
     ]
   },
   {
@@ -53,7 +49,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'event/:id',
-    component: EventComponent,
+    loadChildren: './event/event.module#EventModule',
     canActivate: [
       AuthGuard
     ]
@@ -61,6 +57,13 @@ const appRoutes: Routes = [
   {
     path: 'checklist/:id',
     component: ChecklistComponent,
+    canActivate: [
+      AuthGuard
+    ]
+  },
+  {
+    path: 'my-rsvps',
+    component: MyRsvpsComponent,
     canActivate: [
       AuthGuard
     ]
