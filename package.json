@@ -36,6 +36,7 @@
     "font-awesome": "^4.7.0",
     "hoek": "^5.0.3",
     "jquery": "^3.3.1",
+    "ngx-logger": "^3.0.4",
     "path": "^0.12.7",
     "rxjs": "^6.2.1",
     "typescript": "~2.7.2",

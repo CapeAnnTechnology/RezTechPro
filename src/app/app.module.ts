@@ -57,6 +57,11 @@ import { FormDetailComponent } from './form-detail';
 import { MessagesComponent } from './messages';
 import { UserDetailComponent } from './user-detail';
 
+import { environment } from '../environments/environment';
+
+import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
+
+
 @NgModule({
   declarations: [
     AddressComponent,
@@ -99,6 +104,11 @@ import { UserDetailComponent } from './user-detail';
     HttpClientModule,
     ReactiveFormsModule,
     routing,
+    LoggerModule.forRoot({ serverLoggingUrl: `${environment.BASE_API}log/new/`,
+                           level: NgxLoggerLevel.DEBUG,
+                           serverLogLevel: NgxLoggerLevel.LOG
+                         }),
+
   ],
   providers: [
         AlertService,
