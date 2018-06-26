@@ -1,20 +1,23 @@
-export class Venue {
- _id: number;
- venueID: number;
- name: string;
- email: string;
- phoneNumber: string;
- faxNumber: string;
- addressID: number;
- address: {
- 	streetAddress: string;
- 	secondaryAddress: string;
- 	city: string;
- 	state: string;
- };
- createdAt: string;
- createdBy: string;
+export class VenueModel {
+  constructor(
+    public businessId: string,
+    public name: string,
+    public location: string,
+    public phoneNumber: string,
+    public viewPublic: boolean,
+    public description?: string,
+    public _id?: string,
+    public faxNumber?: string,
+    public comments?: string,
+  ) { }
 }
+
+// businessId: { type: String, required: true },
+// title: { type: String, required: true },
+// location: { type: String, required: true },
+// phoneNumber: { type: String, required: true },
+// faxNumber: String,
+// comments: String
 
 // {
 // 	"ID": "1212",

@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 
-import { Observable, of } from 'rxjs';
+import { throwError as ObservableThrowError, Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-
-import { Venue } from '../_models/venue';
-
+import { VenueModel } from '../_models';
 import { MessageService } from './message.service';
-
 import { environment } from '../../environments/environment';
+import { AuthService } from './auth.service';
+
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -23,12 +22,17 @@ export class VenueService {
 
   constructor(private http: HttpClient,
               private messageService: MessageService,
+              private auth: AuthService,
     ) { }
 
+  private get _authHeader(): string {
+    return `Bearer ${this.auth.accessToken}`;
+  }
+
   /** GET venues from the server */
-  getVenues (): Observable<Venue[]> {
+  getVenues (): Observable<VenueModel[]> {
     const url = `${this.apiUrl}/venues/20`;
-    return this.http.get<Venue[]>(url)
+    return this.http.get<VenueModel[]>(url)
       .pipe(
         tap(venues => this.log(`fetched venues`)),
         catchError(this.handleError('getVenues', []))
@@ -36,63 +40,74 @@ export class VenueService {
   }
 
   /** GET venue by id. Return `undefined` when id not found */
-  getVenueNo404<Data>(id: number): Observable<Venue> {
+  getVenueNo404<Data>(id: number): Observable<VenueModel> {
     const url = `${this.apiUrl}/?id=${id}`;
-    return this.http.get<Venue[]>(url)
+    return this.http.get<VenueModel[]>(url)
       .pipe(
         map(venues => venues[0]), // returns a {0|1} element array
         tap(h => {
           const outcome = h ? `fetched` : `did not find`;
           this.log(`${outcome} venue id=${id}`);
         }),
-        catchError(this.handleError<Venue>(`getVenue id=${id}`))
+        catchError(this.handleError<VenueModel>(`getVenue id=${id}`))
       );
   }
 
   /** GET venue by id. Will 404 if id not found */
-  getVenue(id: number): Observable<Venue> {
+  getVenue(id: number): Observable<VenueModel> {
     const url = `${this.apiUrl}/venue/${id}`;
-    return this.http.get<Venue>(url).pipe(
+    return this.http.get<VenueModel>(url).pipe(
       tap(_ => this.log(`fetched venue id=${id}`)),
-      catchError(this.handleError<Venue>(`getVenue id=${id}`))
+      catchError(this.handleError<VenueModel>(`getVenue id=${id}`))
     );
   }
 
+  // GET an venue by ID (login required)
+  getVenueById$(id: string): Observable<VenueModel> {
+    return this.http
+      .get<VenueModel>(`${environment.BASE_API}venue/${id}`, {
+        headers: new HttpHeaders().set('Authorization', this._authHeader)
+      })
+      .pipe(
+        catchError((error) => this._handleError(error))
+      );
+  }
+
   /* GET venues whose name contains search term */
-  searchVenues(term: string): Observable<Venue[]> {
+  searchVenues(term: string): Observable<VenueModel[]> {
     if (!term.trim()) {
       // if not search term, return empty venue array.
       return of([]);
     }
-    return this.http.get<Venue[]>(`${this.apiUrl}/?name=${term}`).pipe(
+    return this.http.get<VenueModel[]>(`${this.apiUrl}/?name=${term}`).pipe(
       tap(_ => this.log(`found venues matching "${term}"`)),
-      catchError(this.handleError<Venue[]>('searchVenues', []))
+      catchError(this.handleError<VenueModel[]>('searchVenues', []))
     );
   }
 
   //////// Save methods //////////
 
   /** POST: add a new venue to the server */
-  addVenue (venue: Venue): Observable<Venue> {
+  addVenue (venue: VenueModel): Observable<VenueModel> {
     const url = `${this.apiUrl}/venue`;
-    return this.http.post<Venue>(url, venue, httpOptions).pipe(
-      tap((venue: Venue) => this.log(`added venue w/ id=${venue._id}`)),
-      catchError(this.handleError<Venue>('addVenue'))
+    return this.http.post<VenueModel>(url, venue, httpOptions).pipe(
+      tap((venue: VenueModel) => this.log(`added venue w/ id=${venue._id}`)),
+      catchError(this.handleError<VenueModel>('addVenue'))
     );
   }
 
   /** DELETE: delete the venue from the server */
-  deleteVenue (venue: Venue | number): Observable<Venue> {
+  deleteVenue (venue: VenueModel | number): Observable<VenueModel> {
     const id = typeof venue === 'number' ? venue : venue._id;
     const url = `${this.apiUrl}/venue/${id}`;
-    return this.http.delete<Venue>(url, httpOptions).pipe(
+    return this.http.delete<VenueModel>(url, httpOptions).pipe(
       tap(_ => this.log(`deleted venue id=${id}`)),
-      catchError(this.handleError<Venue>('deleteVenue'))
+      catchError(this.handleError<VenueModel>('deleteVenue'))
     );
   }
 
   /** PUT: update the venue on the server */
-  updateVenue (venue: Venue): Observable<any> {
+  updateVenue (venue: VenueModel): Observable<any> {
     const url = `${this.apiUrl}/venue/`;
     return this.http.put(url, venue, httpOptions).pipe(
       tap(_ => this.log(`updated venue id=${venue._id}`)),
@@ -118,6 +133,14 @@ export class VenueService {
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
+  }
+
+  private _handleError(err: HttpErrorResponse | any): Observable<any> {
+    const errorMsg = err.message || 'Error: Unable to complete request.';
+    if (err.message && err.message.indexOf('No JWT present') > -1) {
+      this.auth.login();
+    }
+    return ObservableThrowError(errorMsg);
   }
 
   /** Log a VenueService message with the MessageService */

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Venue } from '../_models/venue';
+import { VenueModel } from '../_models';
 import { VenueService } from '../_services/venue.service';
 import { Title } from '@angular/platform-browser';
 
@@ -9,7 +9,7 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./venue.component.scss']
 })
 export class VenueComponent implements OnInit {
- venues: Venue[] = [];
+ venues: VenueModel[] = [];
  constructor( private venueService: VenueService,
               private titleService: Title ) { }
  ngOnInit() {

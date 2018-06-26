@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Venue } from '../_models/venue';
-import { User } from '../_models/user';
-import { Address } from '../_models/address';
-import { UserService } from '../_services/user.service';
-import { VenueService } from '../_services/venue.service';
-import { AddressService } from '../_services/address.service';
+import { VenueModel, User, Address } from '../_models';
+import { UserService, VenueService, AddressService } from '../_services';
 import { Title } from '@angular/platform-browser';
 
 @Component({
@@ -15,7 +11,7 @@ import { Title } from '@angular/platform-browser';
 
 export class DashboardComponent implements OnInit {
 users: User[] = [];
-venues: Venue[] = [];
+venues: VenueModel[] = [];
 addresses: Address[] = [];
 title = 'Dashboard';
 

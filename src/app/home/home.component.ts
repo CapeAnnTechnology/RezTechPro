@@ -3,7 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
 import { ChecklistService, EventService, UtilityService, FilterService } from '../_services';
-import { EventModel, ChecklistModel } from '../_models';
+import { EventModel, ChecklistModel, VenueModel } from '../_models';
 
 @Component({
  selector: 'app-home',
