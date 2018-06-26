@@ -1,0 +1,30 @@
+<div class="card-body">
+  <h2 class="card-title text-center mb-0">Business Details</h2>
+</div>
+
+<ul class="list-group list-group-flush">
+  <li class="list-group-item">
+    <strong>Where:</strong>{{ business.location }} (<a href="https://www.google.com/maps/dir//{{ business.location }}" target="_blank">get directions</a>)
+  </li>
+  <li class="list-group-item">
+    <strong>Comments:</strong>{{ business.comments }}
+  </li>
+  <ng-template [ngIf]="business.phoneNumber">
+  <li class="list-group-item">
+    <strong>Phone Number:</strong><a href="tel:{{ business.phoneNumber}}">{{ business.phoneNumber | phone }}</a>
+  </li>
+  </ng-template>
+  <ng-template [ngIf]="business.faxNumber">
+	  <li class="list-group-item">
+	    <strong>Fax Number:</strong><a href="tel:{{ business.faxNumber }}">{{ business.faxNumber | phone }}</a>
+	  </li>
+   </ng-template>
+</ul>
+
+<div class="card-body" *ngIf="business.description">
+  <p class="card-text lead" [innerHTML]="business.description"></p>
+</div>
+
+<div *ngIf="auth.isAdmin" class="card-footer text-right small">
+  <a [routerLink]="['/admin/business/update', business._id]">Edit</a>
+</div>

@@ -29,6 +29,13 @@
       </li>
       <li>
         <a
+          *ngIf="auth.loggedIn && auth.isAdmin"
+          routerLink="/businesses"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }">Businesses</a>
+      </li>
+      <li>
+        <a
           *ngIf="auth.loggedIn"
           routerLink="/my-rsvps"
           routerLinkActive="active">My RSVPs</a>

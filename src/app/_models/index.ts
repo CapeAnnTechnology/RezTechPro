@@ -1,5 +1,5 @@
 export * from './address';
-export * from './business';
+export * from './business.model';
 export * from './checklist.model';
 export * from './event.model';
 export * from './form';

@@ -61,6 +61,8 @@ import { environment } from '../environments/environment';
 
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 import { MyRsvpsComponent } from './my-rsvps/my-rsvps.component';
+import { BusinessVenuesComponent } from './business/business-venues/business-venues.component';
+import { BusinessDetailComponent } from './business/business-detail/business-detail.component';
 
 
 
@@ -90,6 +92,8 @@ import { MyRsvpsComponent } from './my-rsvps/my-rsvps.component';
       UserDetailComponent,
     VenueComponent,
       VenueDetailComponent,
+      BusinessVenuesComponent,
+      BusinessDetailComponent,
 
   ],
   imports: [

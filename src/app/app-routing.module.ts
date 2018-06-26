@@ -55,6 +55,14 @@ const appRoutes: Routes = [
     ]
   },
   {
+    path: 'business/:id',
+    component: BusinessComponent,
+    canActivate: [
+      AuthGuard,
+      AdminGuard
+    ]
+  },
+  {
     path: 'checklist/:id',
     component: ChecklistComponent,
     canActivate: [

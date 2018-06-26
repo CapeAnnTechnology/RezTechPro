@@ -1,20 +1,41 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-
-import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
-
-import { Business } from '../_models';
-
-import { MessageService } from './message.service';
-
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { AuthService } from './auth.service';
+import { throwError as ObservableThrowError, Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
-
+import { BusinessModel } from '../_models';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BusinessService {
 
-  constructor() { }
+  constructor(
+    private http: HttpClient,
+    private auth: AuthService
+  ) { }
+
+  private get _authHeader(): string {
+    return `Bearer ${this.auth.accessToken}`;
+  }
+
+  // GET an event by ID (login required)
+  getBusinessById$(id: string): Observable<BusinessModel> {
+    return this.http
+      .get<BusinessModel>(`${environment.BASE_API}business/${id}`, {
+        headers: new HttpHeaders().set('Authorization', this._authHeader)
+      })
+      .pipe(
+        catchError((error) => this._handleError(error))
+      );
+  }
+
+  private _handleError(err: HttpErrorResponse | any): Observable<any> {
+    const errorMsg = err.message || 'Error: Unable to complete request.';
+    if (err.message && err.message.indexOf('No JWT present') > -1) {
+      this.auth.login();
+    }
+    return ObservableThrowError(errorMsg);
+  }
 }
