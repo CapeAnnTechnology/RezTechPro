@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService, BusinessService, UtilityService } from '../_services';
 import { BusinessModel } from '../_models';
-import { phonePipe } from './../_pipes';
 
 @Component({
   selector: 'app-business',

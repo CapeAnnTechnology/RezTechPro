@@ -1,10 +1,10 @@
-import { Injectable, Pipe } from '@angular/core';
+import { Injectable, Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
  name: 'phone'
 })
 
-export class PhonePipe {
+export class PhonePipe implements PipeTransform {
  transform( tel, args ) {
  const value = tel.toString().trim().replace(/^\+/, '');
 

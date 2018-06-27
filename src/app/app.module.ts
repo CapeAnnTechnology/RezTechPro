@@ -16,7 +16,6 @@ import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 
-import { BusinessComponent } from './business';
 import { FormComponent, FormAddComponent } from './form';
 import { VenueComponent, VenueDetailComponent } from './venue';
 import { UserComponent, UserAddComponent } from './user';
@@ -29,7 +28,7 @@ import { AuthGuard,
 
 // import { JwtInterceptor } from './_helpers';
 
-import { PhonePipe } from './_pipes';
+// import { PhonePipe } from './_pipes';
 
 import { AlertService,
          AuthenticationService,
@@ -61,17 +60,12 @@ import { environment } from '../environments/environment';
 
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 import { MyRsvpsComponent } from './my-rsvps/my-rsvps.component';
-import { BusinessVenuesComponent } from './business/business-venues/business-venues.component';
-import { BusinessDetailComponent } from './business/business-detail/business-detail.component';
-
-
 
 @NgModule({
   declarations: [
     AddressComponent,
     AlertComponent,
     AppComponent,
-    BusinessComponent,
     CallbackComponent,
     ChecklistComponent,
       ChecklistDetailComponent,
@@ -85,16 +79,13 @@ import { BusinessDetailComponent } from './business/business-detail/business-det
     MessagesComponent,
     MyRsvpsComponent,
     NavigationComponent,
-    PhonePipe,
+    // PhonePipe,
     RegisterComponent,
     UserAddComponent,
       UserComponent,
       UserDetailComponent,
     VenueComponent,
       VenueDetailComponent,
-      BusinessVenuesComponent,
-      BusinessDetailComponent,
-
   ],
   imports: [
     AngularFontAwesomeModule,

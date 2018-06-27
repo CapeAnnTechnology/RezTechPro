@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { AuthService, UtilityService } from './../../_services';
-import {BusinessModel} from './../../_models';
+import { BusinessModel } from './../../_models';
 
 @Component({
   selector: 'app-business-detail',

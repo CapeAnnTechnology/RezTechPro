@@ -1,5 +1,4 @@
 import { Routes, RouterModule } from '@angular/router';
-import { BusinessComponent } from './business';
 import { FormComponent, FormAddComponent } from './form';
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';
@@ -19,7 +18,7 @@ const appRoutes: Routes = [
  { path: 'callback', component: CallbackComponent },
  { path: 'login', component: LoginComponent },
  { path: 'register', component: RegisterComponent },
- { path: 'businesses', component: BusinessComponent }, // , canActivate: [AuthGuard]
+ //{ path: 'businesses', component: BusinessComponent }, // , canActivate: [AuthGuard]
  { path: 'forms', component: FormComponent }, // , canActivate: [AuthGuard]
  { path: 'form/add', component: FormAddComponent }, // , canActivate: [AuthGuard]
  { path: 'venues', component: VenueComponent }, // , canActivate: [AuthGuard]
@@ -56,7 +55,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'business/:id',
-    component: BusinessComponent,
+    loadChildren: './business/business.module#BusinessModule',
     canActivate: [
       AuthGuard,
       AdminGuard
