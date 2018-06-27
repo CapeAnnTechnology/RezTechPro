@@ -1,3 +1,46 @@
-<p>
-  business-venues works!
-</p>
+<div class="card-body pb-0">
+  <h2 class="card-title text-center mb-0">Venues</h2>
+  <app-loading *ngIf="loading"></app-loading>
+</div>
+
+<ng-template [ngIf]="utils.isLoaded(loading)">
+
+  <!-- All RSVPs -->
+  <div class="card-body text-right">
+    <button (click)="toggleShowRsvps()" class="btn btn-link btn-sm">{{ showRsvpsText }}</button>
+  </div>
+
+  <section class="allVenues" *ngIf="showAllVenues" [@expandCollapse]>
+    <div class="card-body">
+      <p *ngIf="!venues.length" class="lead card-text">There are currently no Venues for this business.</p>
+    </div>
+
+    <ul *ngIf="venues.length" class="list-group list-group-flush">
+      <li
+        *ngFor="let venue of venues"
+        class="list-group-item small">
+        {{ venue.title }}
+        <ng-template [ngIf]="venue.phoneNumber">
+		<li class="list-group-item">
+		<strong>Phone Number:</strong><a href="tel:{{ venue.phoneNumber}}">{{ venue.phoneNumber | phone }}</a>
+		</li>
+		</ng-template>
+		<ng-template [ngIf]="venue.faxNumber">
+		  <li class="list-group-item">
+		    <strong>Fax Number:</strong><a href="tel:{{ venue.faxNumber }}">{{ venue.faxNumber | phone }}</a>
+		  </li>
+		</ng-template>
+        <p *ngIf="auth.isAdmin && venue.comments" class="d-flex w-100">
+          <em [innerHTML]="venue.comments"></em>
+        </p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Error loading RSVPs -->
+  <div *ngIf="error" class="card-body">
+    <p class="alert alert-danger">
+      <strong>Oops!</strong> There was an error retrieving RSVPs for this event.
+    </p>
+  </div>
+</ng-template>

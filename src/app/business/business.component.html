@@ -24,6 +24,27 @@
               [queryParams]="{ tab: 'venues' }"
               [ngClass]="{ 'active': utils.tabIs(tab, 'venues') }">Venues</a>
           </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              [routerLink]="[]"
+              [queryParams]="{ tab: 'owners' }"
+              [ngClass]="{ 'active': utils.tabIs(tab, 'venues') }">Owners</a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              [routerLink]="[]"
+              [queryParams]="{ tab: 'managers' }"
+              [ngClass]="{ 'active': utils.tabIs(tab, 'venues') }">Managers</a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              [routerLink]="[]"
+              [queryParams]="{ tab: 'employees' }"
+              [ngClass]="{ 'active': utils.tabIs(tab, 'venues') }">Employees</a>
+          </li>
         </ul>
       </div>
 

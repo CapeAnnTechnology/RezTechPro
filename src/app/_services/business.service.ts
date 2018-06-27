@@ -5,6 +5,7 @@ import { throwError as ObservableThrowError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { BusinessModel } from '../_models';
+import { VenueModel } from '../_models';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,17 @@ export class BusinessService {
   getBusinessById$(id: string): Observable<BusinessModel> {
     return this.http
       .get<BusinessModel>(`${environment.BASE_API}business/${id}`, {
+        headers: new HttpHeaders().set('Authorization', this._authHeader)
+      })
+      .pipe(
+        catchError((error) => this._handleError(error))
+      );
+  }
+
+  // GET RSVPs by business ID (login required)
+  getVenuesByBusinessId$(businessId: string): Observable<VenueModel[]> {
+    return this.http
+      .get<VenueModel[]>(`${environment.BASE_API}business/${businessId}/venues`, {
         headers: new HttpHeaders().set('Authorization', this._authHeader)
       })
       .pipe(

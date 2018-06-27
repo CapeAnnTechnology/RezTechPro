@@ -1,7 +1,7 @@
 export class VenueModel {
   constructor(
     public businessId: string,
-    public name: string,
+    public title: string,
     public location: string,
     public phoneNumber: string,
     public viewPublic: boolean,
