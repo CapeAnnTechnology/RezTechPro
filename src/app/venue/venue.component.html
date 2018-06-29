@@ -1,8 +1,8 @@
 <app-loading *ngIf="loading"></app-loading>
 
 <ng-template [ngIf]="utils.isLoaded(loading)">
+  <a [routerLink]="['/business/', venue.businessId]" class="btn btn-small btn-primary float-right">Goto Business</a>
   <h1 class="text-center">{{ pageTitle }}</h1>
-
   <!-- Venue -->
   <ng-template [ngIf]="venue">
 
