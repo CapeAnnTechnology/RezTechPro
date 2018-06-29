@@ -17,7 +17,7 @@ import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 
 import { FormComponent, FormAddComponent } from './form';
-import { VenueComponent, VenueDetailComponent } from './venue';
+// import { VenueComponent, VenueDetailComponent } from './venue';
 import { UserComponent, UserAddComponent } from './user';
 
 import { AlertComponent,
@@ -27,8 +27,6 @@ import { AuthGuard,
          AdminGuard } from './_guards';
 
 // import { JwtInterceptor } from './_helpers';
-
-// import { PhonePipe } from './_pipes';
 
 import { AlertService,
          AuthenticationService,
@@ -79,13 +77,10 @@ import { MyRsvpsComponent } from './my-rsvps/my-rsvps.component';
     MessagesComponent,
     MyRsvpsComponent,
     NavigationComponent,
-    // PhonePipe,
     RegisterComponent,
     UserAddComponent,
       UserComponent,
       UserDetailComponent,
-    VenueComponent,
-      VenueDetailComponent,
   ],
   imports: [
     AngularFontAwesomeModule,

@@ -8,8 +8,6 @@ import { CoreModule } from './../core/core.module';
 import { BusinessComponent } from './business.component';
 import { BusinessDetailComponent } from './business-detail/business-detail.component';
 import { BusinessVenuesComponent } from './business-venues/business-venues.component';
-import { PhonePipe } from './../_pipes';
-
 
 @NgModule({
   imports: [
@@ -20,8 +18,7 @@ import { PhonePipe } from './../_pipes';
   declarations: [
     BusinessComponent,
     BusinessDetailComponent,
-    BusinessVenuesComponent,
-    PhonePipe
+    BusinessVenuesComponent
   ]
 })
 export class BusinessModule { }

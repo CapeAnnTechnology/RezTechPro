@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { PhonePipe } from './../_pipes';
 
 import { EventService, UtilityService, FilterService } from './../_services';
 import { SubmittingComponent } from './../_forms';
@@ -22,7 +23,8 @@ import { LoadingComponent, HeaderComponent, FooterComponent } from './../_direct
     HeaderComponent,
     FooterComponent,
     LoadingComponent,
-    SubmittingComponent
+    SubmittingComponent,
+    PhonePipe
   ],
   exports: [
     HttpClientModule,
@@ -32,7 +34,8 @@ import { LoadingComponent, HeaderComponent, FooterComponent } from './../_direct
     HeaderComponent,
     FooterComponent,
     LoadingComponent,
-    SubmittingComponent
+    SubmittingComponent,
+    PhonePipe,
   ]
 })
 export class CoreModule {

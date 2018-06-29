@@ -4,11 +4,13 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService, BusinessService, UtilityService } from '../_services';
 import { BusinessModel } from '../_models';
+import { NGXLogger } from 'ngx-logger';
 
 @Component({
   selector: 'app-business',
   templateUrl: './business.component.html',
-  styleUrls: ['./business.component.scss']
+  styleUrls: ['./business.component.scss'],
+  providers: [NGXLogger]
 })
 export class BusinessComponent implements OnInit {
   pageTitle: string;

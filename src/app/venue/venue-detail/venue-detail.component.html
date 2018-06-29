@@ -1,0 +1,30 @@
+<div class="card-body">
+  <h2 class="card-title text-center mb-0">Venue Details</h2>
+</div>
+
+<ul class="list-group list-group-flush">
+  <li class="list-group-item">
+    <strong>Where:</strong>{{ venue.location }} (<a href="https://www.google.com/maps/dir//{{ venue.location }}" target="_blank">get directions</a>)
+  </li>
+  <li class="list-group-item">
+    <strong>Comments:</strong>{{ venue.comments }}
+  </li>
+  <ng-template [ngIf]="venue.phoneNumber">
+  <li class="list-group-item">
+    <strong>Phone Number:</strong><a href="tel:{{ venue.phoneNumber}}">{{ venue.phoneNumber | phone }}</a>
+  </li>
+  </ng-template>
+  <ng-template [ngIf]="venue.faxNumber">
+	  <li class="list-group-item">
+	    <strong>Fax Number:</strong><a href="tel:{{ venue.faxNumber }}">{{ venue.faxNumber | phone }}</a>
+	  </li>
+   </ng-template>
+</ul>
+
+<div class="card-body" *ngIf="venue.description">
+  <p class="card-text lead" [innerHTML]="venue.description"></p>
+</div>
+
+<div *ngIf="auth.isAdmin" class="card-footer text-right small">
+  <a [routerLink]="['/admin/venue/update', venue._id]">Edit</a>
+</div>

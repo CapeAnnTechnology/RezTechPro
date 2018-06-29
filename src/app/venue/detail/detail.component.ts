@@ -10,7 +10,7 @@ import { AuthService, UtilityService, VenueService } from '../../_services';
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss']
 })
-export class VenueDetailComponent implements OnInit {
+export class DetailComponent implements OnInit {
 
   pageTitle: string;
   id: string;
@@ -71,7 +71,7 @@ private _getVenue() {
       .subscribe(
         res => {
           this.venue = res;
-          this._setPageTitle(this.venue.name);
+          this._setPageTitle(this.venue.title);
           this.loading = false;
         },
         err => {

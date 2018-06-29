@@ -1,31 +1,60 @@
-<div class="row">
-    <div class="col-sm">
-      <h2>All Venues</h2>
-    </div>
-  </div><!-- end row -->
-  <div class="row">
-  <div *ngFor="let venue of venues" class="col-sm">
-    <div class="">
-      <a routerLink="/venue/{{venue.id}}">
-        <div class="module venue">
-          <h4>{{venue.businessName}}</h4>
-          <p>{{venue.address.streetAddress}}<br/>
-             {{venue.address.city}}, {{venue.address.state}}</p>
-        </div>    
-      </a>
-    </div>
-    <div class="mt-1">
-      <div class="btn-group d-flex" role="group" aria-label="quick links">
-        <a routerLink="/forms/venue/{{venue.id}}" class="btn btn-success w-100"><fa name="check-square-o"></fa></a>
+<app-loading *ngIf="loading"></app-loading>
+
+<ng-template [ngIf]="utils.isLoaded(loading)">
+  <h1 class="text-center">{{ pageTitle }}</h1>
+
+  <!-- Venue -->
+  <ng-template [ngIf]="venue">
+
+    <div class="card">
+      <!-- Venue tab navigation -->
+      <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              [routerLink]="[]"
+              [queryParams]="{ tab: 'details' }"
+              [ngClass]="{ 'active': utils.tabIs(tab, 'details') }">Details</a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              [routerLink]="[]"
+              [queryParams]="{ tab: 'checklists' }"
+              [ngClass]="{ 'active': utils.tabIs(tab, 'checklists') }">Checklists</a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              [routerLink]="[]"
+              [queryParams]="{ tab: 'managers' }"
+              [ngClass]="{ 'active': utils.tabIs(tab, 'venues') }">Managers</a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              [routerLink]="[]"
+              [queryParams]="{ tab: 'employees' }"
+              [ngClass]="{ 'active': utils.tabIs(tab, 'venues') }">Employees</a>
+          </li>
+        </ul>
       </div>
+
+      <!-- Venue detail tab -->
+      <app-venue-detail
+        *ngIf="utils.tabIs(tab, 'details')"
+        [venue]="venue"></app-venue-detail>
+
+      <!-- Business Venue tab -->
+      <app-venue-checklists
+        *ngIf="utils.tabIs(tab, 'venues')"
+        [venueId]="venue._id"></app-venue-checklists>
     </div>
-    <div class="mt-1">
-      <div class="btn-group d-flex" role="group" aria-label="quick links">
-        <a href="tel:{{venue.phoneNumber}}" class="btn btn-secondary w-100"><fa name="phone"></fa></a>
-        <a href="tel:{{venue.faxNumber}}" class="btn btn-secondary w-100"><fa name="fax"></fa></a>
-        <a href="https://www.google.com/maps/search/?api=1&query=essex%20ma" class="btn btn-secondary w-100"><fa name="map-o"></fa></a>
-        <a href="#" class="btn btn-secondary w-100"><fa name="pencil"></fa> </a>
-        <a href="#" class="btn btn-secondary w-100"><fa name="trash"></fa></a>
-      </div>
-    </div>
-  </div>
+  </ng-template>
+
+  <!-- Error loading venue -->
+  <p *ngIf="error" class="alert alert-danger">
+    <strong>Oops!</strong> There was an error retrieving information for this venue.
+  </p>
+</ng-template>
