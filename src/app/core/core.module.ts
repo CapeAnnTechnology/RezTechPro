@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { PhonePipe } from './../_pipes';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { EventService, UtilityService, FilterService } from './../_services';
 import { SubmittingComponent } from './../_forms';
@@ -17,7 +18,8 @@ import { LoadingComponent, HeaderComponent, FooterComponent } from './../_direct
     HttpClientModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFontAwesomeModule
   ],
   declarations: [
     HeaderComponent,
@@ -36,6 +38,7 @@ import { LoadingComponent, HeaderComponent, FooterComponent } from './../_direct
     LoadingComponent,
     SubmittingComponent,
     PhonePipe,
+    AngularFontAwesomeModule,
   ]
 })
 export class CoreModule {

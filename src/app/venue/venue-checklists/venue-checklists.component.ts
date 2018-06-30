@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs';
 import { AuthService, VenueService, FilterService, UtilityService } from './../../_services';
 import { ChecklistModel, VenueModel } from './../../_models';
 import { expandCollapse } from './../../_extras';
-
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-venue-checklists',
@@ -21,6 +21,7 @@ export class VenueChecklistsComponent implements OnInit {
   showVenuesText = 'View All Checklists';
   showEditForm: boolean;
   editBtnText: string;
+  api_url = environment.BASE_API;
 
   constructor(
     public auth: AuthService,
@@ -54,8 +55,8 @@ export class VenueChecklistsComponent implements OnInit {
   }
 
   toggleShowChecklists() {
-    this.showAllVenues = !this.showAllVenues;
-    this.showVenuesText = this.showAllVenues ? 'Hide Venues' : 'Show All Venues';
+    this.showAllChecklists = !this.showAllChecklists;
+    this.showVenuesText = this.showAllChecklists ? 'Hide Checklists' : 'Show All Checklists';
   }
 
   toggleEditForm(setVal?: boolean) {

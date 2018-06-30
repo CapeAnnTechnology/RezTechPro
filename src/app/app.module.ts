@@ -5,8 +5,6 @@ import { DatePipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
-
 import { AuthModule } from './auth';
 import { CoreModule } from './core';
 
@@ -78,7 +76,6 @@ import { MyRsvpsComponent } from './my-rsvps/my-rsvps.component';
       UserDetailComponent,
   ],
   imports: [
-    AngularFontAwesomeModule,
     BrowserAnimationsModule,
     BrowserModule,
     FormsModule,

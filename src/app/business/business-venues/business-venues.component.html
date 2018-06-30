@@ -37,7 +37,7 @@
         </ng-template>
         <ng-template [ngIf]="auth.isAdmin">
           <li class="list-group-item">
-            <a [routerLink]="['/venue/', venue._id]" class="btn btn-primary">View</a>
+            <a [routerLink]="['/venue/', venue._id]" class="btn btn-primary"><fa name="glass"></fa> View {{ venue.title }}</a>
           </li>
         </ng-template>
       </li>
