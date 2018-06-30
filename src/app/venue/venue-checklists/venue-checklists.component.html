@@ -1,3 +1,32 @@
-<p>
-  venue-checklists works!
-</p>
+<div class="card-body pb-0">
+  <h2 class="card-title text-center mb-0">Checklists</h2>
+  <app-loading *ngIf="loading"></app-loading>
+</div>
+
+<ng-template [ngIf]="utils.isLoaded(loading)">
+
+  <!-- All Checklists -->
+  <section class="allChecklists" *ngIf="showAllChecklists" [@expandCollapse]>
+    <div class="card-body">
+      <p *ngIf="!checklists.length" class="lead card-text">There are currently no Checklists for this Venue.</p>
+    </div>
+
+    <ul *ngIf="checklists.length" class="list-group list-group-flush">
+      <li
+        *ngFor="let checklist of checklists"
+        class="list-group-item">
+        {{ utils.eventDates(checklist.datetime, checklist.datetime) }}
+        <ng-template [ngIf]="auth.isAdmin">
+            <a [routerLink]="['/checklist/', checklist._id]" class="btn btn-primary">View</a>
+        </ng-template>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Error loading Checklists -->
+  <div *ngIf="error" class="card-body">
+    <p class="alert alert-danger">
+      <strong>Oops!</strong> There was an error retrieving Checklists for this venue.
+    </p>
+  </div>
+</ng-template>

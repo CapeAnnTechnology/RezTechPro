@@ -45,9 +45,6 @@ import { CallbackComponent } from './callback/callback.component';
 
 import { LogComponent } from './log';
 
-import { ChecklistComponent,
-         ChecklistDetailComponent } from './checklist';
-
 import { AddressComponent } from './address';
 import { DashboardComponent } from './dashboard';
 import { FormDetailComponent } from './form-detail';
@@ -65,8 +62,6 @@ import { MyRsvpsComponent } from './my-rsvps/my-rsvps.component';
     AlertComponent,
     AppComponent,
     CallbackComponent,
-    ChecklistComponent,
-      ChecklistDetailComponent,
     DashboardComponent,
     FormAddComponent,
       FormComponent,

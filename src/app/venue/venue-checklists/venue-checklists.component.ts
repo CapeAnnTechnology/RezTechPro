@@ -17,7 +17,7 @@ export class VenueChecklistsComponent implements OnInit {
   checklists: ChecklistModel[];
   loading: boolean;
   error: boolean;
-  showAllVenues = true;
+  showAllChecklists = true;
   showVenuesText = 'View All Checklists';
   showEditForm: boolean;
   editBtnText: string;

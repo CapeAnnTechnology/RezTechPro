@@ -7,7 +7,6 @@ import { RegisterComponent } from './register';
 import { UserComponent, UserAddComponent } from './user';
 import { AuthGuard, AdminGuard } from './_guards';
 import { CallbackComponent } from './callback';
-import { ChecklistComponent } from './checklist';
 import { LogComponent } from './log';
 
 import { MyRsvpsComponent } from './my-rsvps/my-rsvps.component';
@@ -71,9 +70,10 @@ const appRoutes: Routes = [
   },
   {
     path: 'checklist/:id',
-    component: ChecklistComponent,
+    loadChildren: './checklist/checklist.module#ChecklistModule',
     canActivate: [
-      AuthGuard
+      AuthGuard,
+      AdminGuard
     ]
   },
   {

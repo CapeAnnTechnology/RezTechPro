@@ -5,6 +5,7 @@ export class BusinessModel {
     public phoneNumber: string,
     public faxNumber?: string,
     public comments?: string,
-    public _id?: string
+    public _id?: string,
+    public description?: string
   ) { }
 }
