@@ -1,4 +1,4 @@
-export class ChecklistModel {
+class ChecklistModel {
   constructor(
     public title: string,
     public location: string,
@@ -9,3 +9,18 @@ export class ChecklistModel {
     public _id?: string,
   ) { }
 }
+
+class FormChecklistModel {
+  constructor(
+    public title: string,
+    public location: string,
+    public startDate: string,
+    public startTime: string,
+    public endDate: string,
+    public endTime: string,
+    public viewPublic: boolean,
+    public description?: string
+  ) { }
+}
+
+export { ChecklistModel, FormChecklistModel };

@@ -49,6 +49,39 @@ export class ChecklistService {
       );
   }
 
+    // POST new checklist (admin only)
+  postChecklist$(checklist: ChecklistModel): Observable<ChecklistModel> {
+    return this.http
+      .post<ChecklistModel>(`${environment.BASE_API}checklist/new`, checklist, {
+        headers: new HttpHeaders().set('Authorization', this._authHeader)
+      })
+      .pipe(
+        catchError((error) => this._handleError(error))
+      );
+  }
+
+  // PUT existing checklist (admin only)
+  editChecklist$(id: string, checklist: ChecklistModel): Observable<ChecklistModel> {
+    return this.http
+      .put<ChecklistModel>(`${environment.BASE_API}checklist/${id}`, checklist, {
+        headers: new HttpHeaders().set('Authorization', this._authHeader)
+      })
+      .pipe(
+        catchError((error) => this._handleError(error))
+      );
+  }
+
+  // DELETE existing checklist (admin only)
+  deleteChecklist$(id: string): Observable<any> {
+    return this.http
+      .delete(`${environment.BASE_API}checklist/${id}`, {
+        headers: new HttpHeaders().set('Authorization', this._authHeader)
+      })
+      .pipe(
+        catchError((error) => this._handleError(error))
+      );
+  }
+
   private _handleError(err: HttpErrorResponse | any): Observable<any> {
     const errorMsg = err.message || 'Error: Unable to complete request.';
     if (err.message && err.message.indexOf('No JWT present') > -1) {

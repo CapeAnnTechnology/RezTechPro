@@ -4,6 +4,7 @@ export * from './auth.service';
 export * from './authentication.service';
 export * from './business.service';
 export * from './checklist.service';
+export * from './checklist-form.service';
 export * from './event-form.service';
 export * from './event.service';
 export * from './filter.service';
