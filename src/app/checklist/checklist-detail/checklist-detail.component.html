@@ -4,16 +4,107 @@
 
 <ul class="list-group list-group-flush">
   <li class="list-group-item">
-    <strong>When:</strong>{{ utils.eventDatesTimes(checklist.datetime, checklist.datetime) }}
+    When: {{ utils.eventDates(checklist.timestamp, checklist.timestamp) }}
   </li>
   <li class="list-group-item">
-    <strong>Where:</strong>{{ checklist.location }} (<a href="https://www.google.com/maps/dir//{{ checklist.location }}" target="_blank">get directions</a>)
+    Where: {{checklist.venueId.location}} (<a href="https://www.google.com/maps/dir//{{checklist.venueId.location}}" target="_blank">get directions</a>)
+  </li>
+  <li class="list-group-item d-flex">
+  	<div class="mr-auto">Completed By: {{checklist.userId.user_metadata.name}}</div>
+  	<div class="">License Number: {{checklist.userId.certificates[0].number}}</div>
+  </li>
+</ul>
+<div class="card-body">
+  <h2 class="card-title text-center mb-0">Checklist Questions</h2>
+</div>
+<ul class="list-group list-group-flush">
+  <li class="list-group-item d-flex" [class.text-danger]="checklist.question_1 != 'true'">
+  	<div class="mr-auto">Is there one crowd manager on duty for every 250 occupants as identified on the Certificate of Occupancy?</div>
+  	<div class=""><span class="answer" [innerHtml]="checklist.question_1 | answer"></span></div>
+
+  </li>
+  <li class="list-group-item d-flex" [class.text-danger]="checklist.question_2 != 'true'" [class.text-white]="checklist.question_2 != 'true'" >
+    <div class="mr-auto">Are employees trained to direct occupants to an exit in the event of an emergency and the other duties contained in the emergency plan? </div>
+  	<div class=""><span class="answer" [innerHtml]="checklist.question_2 | answer"></span></div>
+  </li>
+  <li class="list-group-item d-flex" [class.text-danger]="checklist.question_3 != 'true'">
+    <div class="mr-auto">Are all egress paths maintained in a manner to provide a clear, unlocked, accessible path?</div>
+    <div class=""><span class="answer" [innerHtml]="checklist.question_3 | answer"></span></div>
+  </li>
+  <li class="list-group-item d-flex" [class.text-danger]="checklist.question_4 != 'true'">
+    <div class="mr-auto">A Are all exit doors operable?</div>
+    <div class=""><span class="answer" [innerHtml]="checklist.question_4 | answer"></span></div>
+  </li>
+  <li class="list-group-item d-flex" [class.text-danger]="checklist.question_5 != 'true'">
+    <div class="mr-auto">Is all exit sign lighting operable?</div>
+    <div class=""><span class="answer" [innerHtml]="checklist.question_5 | answer"></span></div>
+  </li>
+  <li class="list-group-item d-flex" [class.text-danger]="checklist.question_6 != 'true'">
+    <div class="mr-auto">Is all emergency lighting operable?</div>
+    <div class=""><span class="answer" [innerHtml]="checklist.question_6 | answer"></span></div>
+  </li>
+  <li class="list-group-item d-flex" [class.text-danger]="checklist.question_7 != 'true'">
+    <div class="mr-auto">Are fire extinguishers in working order?
+    	<div class="small-text">Last inspection date: {{ utils.eventDates(checklist.question_7_date, checklist.question_7_date) }}</div>
+    </div>
+    <div class=""><span class="answer" [innerHtml]="checklist.question_7 | answer"></span></div>
+  </li>
+  <li class="list-group-item d-flex" [class.text-danger]="checklist.question_8 != 'true'">
+    <div class="mr-auto">Are exterior stairways and means of egress free of snow and ice?</div>
+    <span class="answer" [innerHtml]="checklist.question_8 | answer"></span>
+  </li>
+  <li class="list-group-item d-flex" [class.text-danger]="checklist.question_9 != 'true'">
+    <div class="mr-auto">The person responsible to ensure no one enters in excess of the posted occupant load limit,
+which includes all employees, guests and performers, is:
+		<div class="small-text">Person is: {{ checklist.question_9_person }}</div>
+	</div>
+	<div class=""><span class="answer" [innerHtml]="checklist.question_9 | answer"></span></div>
+  </li>
+  <li class="list-group-item d-flex" [class.text-danger]="checklist.question_10 != 'true'">
+    <div class="mr-auto">The person responsible to ensure no one enters in excess of the posted occupant load limit,
+which includes all employees, guests and performers, is:
+		<div class="small-text">Person is: {{ checklist.question_10_person }}</div>
+	</div>
+	<div class=""><span class="answer" [innerHtml]="checklist.question_10 | answer"></span></div>
+  </li>
+  <li class="list-group-item d-flex" [class.text-danger]="checklist.question_11 != 'true'">
+    <div class="mr-auto">Is the Certificate of Inspection posted?
+    	<div class="small-text">Maximum Capacity: {{ checklist.question_11_capacity }}</div>
+		<div class="small-text">Expiration Date: {{ utils.eventDates(checklist.question_11_date, checklist.question_11_date) }}</div>
+    </div>
+    <div class=""><span class="answer" [innerHtml]="checklist.question_11 | answer"></span></div>
+  </li>
+  <li class="list-group-item d-flex" [class.text-danger]="checklist.question_12 != 'true'">
+    <div class="mr-auto">Has the sprinkler system been inspected within the last year?
+    	<div class="small-text">Most recent automatic sprinkler inspection/test date: {{ utils.eventDates(checklist.question_12_date, checklist.question_12_date) }}</div>
+    </div>
+    <div class=""><span class="answer" [innerHtml]="checklist.question_12 | answer"></span></div>
+  </li>
+  <li class="list-group-item d-flex" [class.text-danger]="checklist.question_13 != 'true'">
+    <div class="mr-auto">Has the fire alarm system been inspected and tested within the last year?
+    	<div class="small-text">Most recent fire alarm system inspection/test date:  {{ utils.eventDates(checklist.question_13_date, checklist.question_13_date) }}</div>
+    </div>
+    <div class=""><span class="answer" [innerHtml]="checklist.question_13 | answer"></span></div>
+  </li>
+  <li class="list-group-item d-flex" [class.text-danger]="checklist.question_14 != 'true'">
+    <div class="mr-auto">Has the commercial cooking equipment exhaust system been cleaned in accordance with
+the required frequency?
+		<div class="small-text">Date of last cleaning?  {{ utils.eventDates(checklist.question_14_date, checklist.question_14_date) }}</div>
+	</div>
+	<div class=""><span class="answer" [innerHtml]="checklist.question_14 | answer"></span></div>
+  </li>
+  <li class="list-group-item d-flex" [class.text-danger]="checklist.question_15 != 'true'">
+    <div class="mr-auto">Has the commercial cooking fire suppression system been inspected in the last six months?
+    	<div class="small-text">Date of last inspection: {{ utils.eventDates(checklist.question_15_date, checklist.question_15_date) }}</div>
+    </div>
+    <div class=""><span class="answer" [innerHtml]="checklist.question_15 | answer"></span></div>
   </li>
 </ul>
 
-<div class="card-body" *ngIf="checklist.description">
+
+<!-- <div class="card-body" *ngIf="checklist.description">
   <p class="card-text lead" [innerHTML]="checklist.description"></p>
-</div>
+</div> -->
 
 <!-- <div *ngIf="auth.isAdmin" class="card-footer text-right small">
   <a [routerLink]="['/admin/checklist/update', checklist._id]">Edit</a>

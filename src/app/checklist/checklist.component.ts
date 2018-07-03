@@ -67,7 +67,7 @@ export class ChecklistComponent implements OnInit, OnDestroy {
       .subscribe(
         res => {
           this.checklist = res;
-          this._setPageTitle(this.checklist.title);
+          this._setPageTitle(this.checklist.venueId.title.toString()+' Checklist '+this.utils.eventDates(this.checklist.timestamp,this.checklist.timestamp).toString());
           this.loading = false;
           this.checklistPast = this.utils.eventPast(this.checklist.endDatetime);
         },

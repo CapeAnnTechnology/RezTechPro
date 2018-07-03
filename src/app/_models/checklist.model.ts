@@ -2,10 +2,13 @@ class ChecklistModel {
   constructor(
     public title: string,
     public location: string,
-    public startDatetime: Date,
-    public endDatetime: Date,
+    public timestamp: Date,
     public viewPublic: boolean,
+    public venueId: Object,
+    public userId: Object,
     public description?: string,
+    public version?: string,
+    public ipAddress?: string,
     public _id?: string,
   ) { }
 }
