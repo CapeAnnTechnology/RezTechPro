@@ -15,6 +15,6 @@ export const AUTH_CONFIG: AuthConfig = {
   CLIENT_DOMAIN: environment.AUTH0_CLIENT_DOMAIN, // e.g., you.auth0.com
   AUDIENCE: environment.API_URI, // e.g., http://localhost:8083/api/
   REDIRECT: `${environment.BASE_URI}/callback`,
-  SCOPE: 'openid profile',
+  SCOPE: 'openid profile email',
   NAMESPACE: environment.NAMESPACE
 };

@@ -3,8 +3,9 @@
 </div>
 
 <ul class="list-group list-group-flush">
-  <li class="list-group-item">
-    When: {{ utils.eventDates(checklist.timestamp, checklist.timestamp) }}
+  <li class="list-group-item d-flex">
+  	<div class="mr-auto">When: {{ checklist.timestamp | date:'fullDate' }}</div>
+  	<div class="">Completed At: {{ checklist.timestamp | date:'shortTime' }}</div>
   </li>
   <li class="list-group-item">
     Where: {{checklist.venueId.location}} (<a href="https://www.google.com/maps/dir//{{checklist.venueId.location}}" target="_blank">get directions</a>)
@@ -12,6 +13,7 @@
   <li class="list-group-item d-flex">
   	<div class="mr-auto">Completed By: {{checklist.userId.user_metadata.name}}</div>
   	<div class="">License Number: {{checklist.userId.certificates[0].number}}</div>
+  	<div class="pl-1">Expires: {{checklist.userId.certificates[0].endDatetime | date:'shortDate'}}</div>
   </li>
 </ul>
 <div class="card-body">
@@ -32,7 +34,7 @@
     <div class=""><span class="answer" [innerHtml]="checklist.question_3 | answer"></span></div>
   </li>
   <li class="list-group-item d-flex" [class.text-danger]="checklist.question_4 != 'true'">
-    <div class="mr-auto">A Are all exit doors operable?</div>
+    <div class="mr-auto">Are all exit doors operable?</div>
     <div class=""><span class="answer" [innerHtml]="checklist.question_4 | answer"></span></div>
   </li>
   <li class="list-group-item d-flex" [class.text-danger]="checklist.question_5 != 'true'">
@@ -101,6 +103,19 @@ the required frequency?
   </li>
 </ul>
 
+<div class="card bg-light border-dark border-light m-4 small-text">
+	<div class="card-header">Checklist Signature</div>
+	<div class="card-body">
+    	<h6 class="card-title small-text">Browser Details</h6>
+	    <p class="card-text">User IP Address: {{ checklist.ipAddress }}</p>
+	    <p class="card-text">User Browser Agent: {{ checklist.userAgent }}</p>
+	</div>
+	<div class="card-body">
+    	<h6 class="card-title small-text">Submission Details</h6>
+	    <p class="card-text">Submitted At: {{ checklist.timestamp }}</p>
+      <p class="card-text">Checklist ID: {{ checklist._id }}</p>
+	</div>
+</div>
 
 <!-- <div class="card-body" *ngIf="checklist.description">
   <p class="card-text lead" [innerHTML]="checklist.description"></p>

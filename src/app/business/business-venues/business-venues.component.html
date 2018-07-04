@@ -5,11 +5,6 @@
 
 <ng-template [ngIf]="utils.isLoaded(loading)">
 
-  <!-- All RSVPs -->
-  <div class="card-body text-right">
-    <button (click)="toggleShowRsvps()" class="btn btn-link btn-sm">{{ showRsvpsText }}</button>
-  </div>
-
   <section class="allVenues" *ngIf="showAllVenues" [@expandCollapse]>
     <div class="card-body">
       <p *ngIf="!venues.length" class="lead card-text">There are currently no Venues for this business.</p>
@@ -19,26 +14,36 @@
       <li
         *ngFor="let venue of venues"
         class="list-group-item small">
-        {{ venue.title }}
+        <ng-template [ngIf]="auth.isAdmin">
+          <div class="float-right">
+            <a [routerLink]="['/venue/', venue._id]" class="btn btn-sm btn-primary"><fa name="glass"></fa> View {{ venue.title }}</a>
+            <a [routerLink]="['/venue/', venue._id]" [queryParams]="{tab: 'checklists'}" class="btn btn-sm btn-primary ml-2"><fa name="calendar-check-o"></fa> View All Checklists</a>
+            <a [routerLink]="['/checklist', venue._id, 'new']" class="btn btn-success btn-sm ml-2" ><fa name="calendar-check-o"></fa> Create New Checklist</a>
+          </div>
+        </ng-template>
+        <h4>{{ venue.title }}</h4>
+        <div class="d-flex">
+
         <ng-template [ngIf]="venue.phoneNumber">
-      		<li class="list-group-item">
-      		<strong>Phone Number:</strong><a href="tel:{{ venue.phoneNumber}}">{{ venue.phoneNumber | phone }}</a>
-      		</li>
+      		<div class="list-group-item">
+      		<strong></strong><a href="tel:{{ venue.phoneNumber}}" class="btn btn-sm btn-outline-primary"><fa name="phone"></fa> {{ venue.phoneNumber | phone }}</a>
+      		</div>
     		</ng-template>
     		<ng-template [ngIf]="venue.faxNumber">
-    		  <li class="list-group-item">
-    		    <strong>Fax Number:</strong><a href="tel:{{ venue.faxNumber }}">{{ venue.faxNumber | phone }}</a>
-    		  </li>
+    		  <div class="list-group-item">
+    		    <strong></strong><a href="tel:{{ venue.faxNumber }}" class="btn btn-sm btn-outline-primary"><fa name="fax"></fa> {{ venue.faxNumber | phone }}</a>
+    		  </div>
     		</ng-template>
-        <ng-template [ngIf]="auth.isAdmin && venue.comments">
-          <li class="list-group-item">
-            <em [innerHTML]="venue.comments"></em>
-          </li>
+        <ng-template [ngIf]="venue.location">
+          <div class="list-group-item">
+            <strong></strong><a href="https://www.google.com/maps/dir//{{ venue.location }}" class="btn btn-sm btn-outline-primary"><fa name="globe"></fa> {{ venue.location }}</a>
+          </div>
         </ng-template>
-        <ng-template [ngIf]="auth.isAdmin">
-          <li class="list-group-item">
-            <a [routerLink]="['/venue/', venue._id]" class="btn btn-primary"><fa name="glass"></fa> View {{ venue.title }}</a>
-          </li>
+      </div>
+      <ng-template [ngIf]="auth.isAdmin && venue.comments">
+          <div class="list-group-item">
+            <em [innerHTML]="venue.comments"></em>
+          </div>
         </ng-template>
       </li>
     </ul>

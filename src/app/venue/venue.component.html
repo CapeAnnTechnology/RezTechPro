@@ -1,8 +1,10 @@
 <app-loading *ngIf="loading"></app-loading>
 
 <ng-template [ngIf]="utils.isLoaded(loading)">
-  <a [routerLink]="['/business/', venue.businessId]" class="btn btn-small btn-primary float-right"><fa name="building"></fa> Goto Business</a>
   <h1 class="text-center">{{ pageTitle }}</h1>
+  <div class="mb-2">
+    <a [routerLink]="['/business/', venue.businessId]" class="btn btn-sm btn-outline-primary"><fa name="building"></fa> Goto Business</a>
+  </div>
   <!-- Venue -->
   <ng-template [ngIf]="venue">
 
@@ -29,14 +31,14 @@
               class="nav-link"
               [routerLink]="[]"
               [queryParams]="{ tab: 'managers' }"
-              [ngClass]="{ 'active': utils.tabIs(tab, 'venues') }">Managers</a>
+              [ngClass]="{ 'active': utils.tabIs(tab, 'managers') }">Managers</a>
           </li>
           <li class="nav-item">
             <a
               class="nav-link"
               [routerLink]="[]"
               [queryParams]="{ tab: 'employees' }"
-              [ngClass]="{ 'active': utils.tabIs(tab, 'venues') }">Employees</a>
+              [ngClass]="{ 'active': utils.tabIs(tab, 'employees') }">Employees</a>
           </li>
         </ul>
       </div>

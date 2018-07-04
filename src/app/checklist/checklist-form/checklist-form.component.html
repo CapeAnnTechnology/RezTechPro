@@ -1,6 +1,6 @@
 <form [formGroup]="checklistForm" (ngSubmit)="onSubmit()">
   <!-- Title -->
-  <div class="form-group">
+  <!-- <div class="form-group">
     <label for="title">Title</label>
     <input
       id="title"
@@ -13,136 +13,425 @@
       class="small text-danger formErrors"
       [innerHTML]="formErrors.title">
     </div>
-  </div>
-
-  <!-- Location -->
-  <div class="form-group">
-    <label for="location">Location</label>
-    <input
-      id="location"
-      type="text"
-      class="form-control"
-      formControlName="location"
-      [maxlength]="ef.locMax">
-    <div
-      *ngIf="formErrors.location"
-      class="small text-danger formErrors"
-      [innerHTML]="formErrors.location">
-    </div>
-  </div>
-
-  <div
-    formGroupName="datesGroup"
-    [ngClass]="{'has-danger': checklistForm.get('datesGroup').errors}">
-    <div class="row">
-      <!-- Start date -->
-      <div class="form-group col-sm-12 col-md-6">
-        <label for="startDate">Start Date</label>
-        <input
-          id="startDate"
-          type="text"
-          class="form-control"
-          formControlName="startDate"
-          [placeholder]="ef.dateFormat"
-          [maxlength]="ef.dateMax">
-        <div
-          *ngIf="formErrors.datesGroup.startDate"
-          class="small text-danger formErrors"
-          [innerHTML]="formErrors.datesGroup.startDate">
-        </div>
+  </div> -->
+<ul class="list-group list-group-flush">
+<li class="list-group-item">
+<!-- View Question 1 -->
+  <div>
+  <div class="row justify-content">
+      <div class="col">
+        <label class="label-inline-group">Is there one crowd manager on duty for every 250 occupants as identified on the Certificate of Occupancy?</label>
       </div>
-
-      <!-- Start time -->
-      <div class="form-group col-sm-12 col-md-6">
-        <label for="startTime">Start Time</label>
-        <input
-          id="startTime"
-          type="text"
-          class="form-control"
-          formControlName="startTime"
-          [placeholder]="ef.timeFormat"
-          [maxlength]="ef.timeMax">
-        <div
-          *ngIf="formErrors.datesGroup.startTime"
-          class="small text-danger formErrors"
-          [innerHTML]="formErrors.datesGroup.startTime">
+      <div class="col col-2 col-md-1 form-group">
+          <label class="form-check-label">
+            <input
+              id="question1-yes"
+              type="radio"
+              class="form-check-input"
+              [value]="true"
+              formControlName="question1"> Yes
+          </label>
         </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <!-- End date -->
-      <div class="form-group col-sm-12 col-md-6">
-        <label for="endDate">End Date</label>
-        <input
-          id="endDate"
-          type="text"
-          class="form-control"
-          formControlName="endDate"
-          [placeholder]="ef.dateFormat"
-          [maxlength]="ef.dateMax">
-        <div
-          *ngIf="formErrors.datesGroup.endDate"
-          class="small text-danger formErrors"
-          [innerHTML]="formErrors.datesGroup.endDate">
+        <div class="col col-2 col-md-1 form-group">
+          <label class="form-check-label">
+            <input
+              id="question1-no"
+              type="radio"
+              class="form-check-input"
+              [value]="false"
+              formControlName="question1"> No
+          </label>
         </div>
-      </div>
-
-      <!-- End time -->
-      <div class="form-group col-sm-12 col-md-6">
-        <label for="endTime">End Time</label>
-        <input
-          id="endTime"
-          type="text"
-          class="form-control"
-          formControlName="endTime"
-          [placeholder]="ef.timeFormat"
-          [maxlength]="ef.timeMax">
-        <div
-          *ngIf="formErrors.datesGroup.endTime"
-          class="small text-danger formErrors"
-          [innerHTML]="formErrors.datesGroup.endTime">
-        </div>
-      </div>
-    </div>
-
-    <p *ngIf="checklistForm.get('datesGroup').errors" class="alert alert-danger small">
-      <strong>Dates/times out of range:</strong> Checklists cannot end before they begin. Please double-check the start and end dates and times.
-    </p>
-  </div>
-
-  <!-- View Public -->
-  <div class="form-group">
-    <label class="label-inline-group">List checklist publicly?</label>
-    <div class="form-check form-check-inline">
-      <label class="form-check-label">
-        <input
-          id="viewPublic-yes"
-          type="radio"
-          class="form-check-input"
-          [value]="true"
-          formControlName="viewPublic"> Yes
-      </label>
-    </div>
-    <div class="form-check form-check-inline">
-      <label class="form-check-label">
-        <input
-          id="viewPublic-no"
-          type="radio"
-          class="form-check-input"
-          [value]="false"
-          formControlName="viewPublic"> No
-      </label>
     </div>
     <div
-      *ngIf="formErrors.viewPublic"
+      *ngIf="formErrors.question1"
       class="small text-danger formErrors"
-      [innerHTML]="formErrors.viewPublic">
+      [innerHTML]="formErrors.question1">
     </div>
   </div>
+</li>
+<li class="list-group-item">
+ <!-- View Question 2 -->
+  <div>
+  <div class="row justify-content">
+      <div class="col">
+        <label class="label-inline-group">Are employees trained to direct occupants to an exit in the event of an emergency and the other duties contained in the emergency plan?</label>
+      </div>
+      <div class="col col-2 col-md-1">
+          <label class="form-check-label">
+            <input
+              id="question2-yes"
+              type="radio"
+              class="form-check-input"
+              [value]="true"
+              formControlName="question2"> Yes
+          </label>
+        </div>
+        <div class="col col-2 col-md-1">
+          <label class="form-check-label">
+            <input
+              id="question2-no"
+              type="radio"
+              class="form-check-input"
+              [value]="false"
+              formControlName="question2"> No
+          </label>
+        </div>
+    </div>
+    <div
+      *ngIf="formErrors.question2"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.question2">
+    </div>
+  </div>
+</li>
+<li class="list-group-item">
+  <!-- View Question 3 -->
+  <div>
+  <div class="row justify-content">
+      <div class="col">
+        <label class="label-inline-group">Are all egress paths maintained in a manner to provide a clear, unlocked, accessible path?</label>
+      </div>
+      <div class="col col-2 col-md-1">
+          <label class="form-check-label">
+            <input
+              id="question3-yes"
+              type="radio"
+              class="form-check-input"
+              [value]="true"
+              formControlName="question3"> Yes
+          </label>
+        </div>
+        <div class="col col-2 col-md-1">
+          <label class="form-check-label">
+            <input
+              id="question3-no"
+              type="radio"
+              class="form-check-input"
+              [value]="false"
+              formControlName="question3"> No
+          </label>
+        </div>
+    </div>
+    <div
+      *ngIf="formErrors.question3"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.question3">
+    </div>
+  </div>
+</li>
+<li class="list-group-item">
+<!-- View Question 4 -->
+  <div>
+  <div class="row justify-content">
+      <div class="col">
+        <label class="label-inline-group">Are all exit doors operable?</label>
+      </div>
+      <div class="col col-2 col-md-1">
+          <label class="form-check-label">
+            <input
+              id="question4-yes"
+              type="radio"
+              class="form-check-input"
+              [value]="true"
+              formControlName="question4"> Yes
+          </label>
+        </div>
+        <div class="col col-2 col-md-1">
+          <label class="form-check-label">
+            <input
+              id="question4-no"
+              type="radio"
+              class="form-check-input"
+              [value]="false"
+              formControlName="question4"> No
+          </label>
+        </div>
+    </div>
+    <div
+      *ngIf="formErrors.question4"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.question4">
+    </div>
+  </div>
+</li>
+<li class="list-group-item">
+<!-- View Question 5 -->
+  <div>
+  <div class="row justify-content">
+      <div class="col">
+        <label class="label-inline-group">Is all exit sign lighting operable?</label>
+      </div>
+      <div class="col col-2 col-md-1">
+          <label class="form-check-label">
+            <input
+              id="question5-yes"
+              type="radio"
+              class="form-check-input"
+              [value]="true"
+              formControlName="question5"> Yes
+          </label>
+        </div>
+        <div class="col col-2 col-md-1">
+          <label class="form-check-label">
+            <input
+              id="question5-no"
+              type="radio"
+              class="form-check-input"
+              [value]="false"
+              formControlName="question5"> No
+          </label>
+        </div>
+    </div>
+    <div
+      *ngIf="formErrors.question5"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.question5">
+    </div>
+  </div>
+</li>
+<li class="list-group-item">
+<!-- View Question 6 -->
+  <div>
+  <div class="row justify-content">
+      <div class="col">
+        <label class="label-inline-group">Is all emergency lighting operable?</label>
+      </div>
+      <div class="col col-2 col-md-1">
+          <label class="form-check-label">
+            <input
+              id="question6-yes"
+              type="radio"
+              class="form-check-input"
+              [value]="true"
+              formControlName="question6"> Yes
+          </label>
+        </div>
+        <div class="col col-2 col-md-1">
+          <label class="form-check-label">
+            <input
+              id="question6-no"
+              type="radio"
+              class="form-check-input"
+              [value]="false"
+              formControlName="question6"> No
+          </label>
+        </div>
+    </div>
+    <div
+      *ngIf="formErrors.question6"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.question6">
+    </div>
+  </div>
+</li>
+<li class="list-group-item">
+<!-- View Question 7 -->
+  <div>
+  <div class="row justify-content">
+      <div class="col">
+        <label class="label-inline-group">Are fire extinguishers in working order?</label>
+      </div>
+      <div class="col col-2 col-md-1">
+          <label class="form-check-label">
+            <input
+              id="question7-yes"
+              type="radio"
+              class="form-check-input"
+              [value]="true"
+              formControlName="question7"> Yes
+          </label>
+        </div>
+        <div class="col col-2 col-md-1">
+          <label class="form-check-label">
+            <input
+              id="question7-no"
+              type="radio"
+              class="form-check-input"
+              [value]="false"
+              formControlName="question7"> No
+          </label>
+        </div>
+    </div>
+    <div
+      *ngIf="formErrors.question7"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.question7">
+    </div>
+  </div>
+  <!-- View Question 7 Date -->
+  <div>
+  <div class="row justify-content form-inline">
+      <div class="col form-group">
+        <label for="question7Date" class="label-inline-group col-form-label-sm">Last inspection date:</label>
+          <input
+            id="question7-date"
+            type="text"
+            class="form-control ml-2 form-control-sm"
+            [placeholder]="cf.dateFormat"
+            formControlName="question7Date">
+        </div>
+    </div>
+    <div
+      *ngIf="formErrors.question7Date"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.question7Date">
+    </div>
+  </div>
+</li>
+<li class="list-group-item">
+<!-- View Question 8 -->
+  <div>
+  <div class="row justify-content">
+      <div class="col">
+        <label class="label-inline-group">Are exterior stairways and means of egress free of snow and ice?</label>
+      </div>
+      <div class="col col-2 col-md-1">
+          <label class="form-check-label">
+            <input
+              id="question8-yes"
+              type="radio"
+              class="form-check-input"
+              [value]="true"
+              formControlName="question8"> Yes
+          </label>
+        </div>
+        <div class="col col-2 col-md-1">
+          <label class="form-check-label">
+            <input
+              id="question8-no"
+              type="radio"
+              class="form-check-input"
+              [value]="false"
+              formControlName="question8"> No
+          </label>
+        </div>
+    </div>
+    <div
+      *ngIf="formErrors.question8"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.question8">
+    </div>
+  </div>
+</li>
+<li class="list-group-item">
+<!-- View Question 9 -->
+  <div>
+  <div class="row justify-content">
+      <div class="col">
+        <label class="label-inline-group">The person responsible to ensure no one enters in excess of the posted occupant load limit, which includes all employees, guests and performers?</label>
+      </div>
+      <div class="col col-2 col-md-1">
+          <label class="form-check-label">
+            <input
+              id="question9-yes"
+              type="radio"
+              class="form-check-input"
+              [value]="true"
+              formControlName="question9"> Yes
+          </label>
+        </div>
+        <div class="col col-2 col-md-1">
+          <label class="form-check-label">
+            <input
+              id="question9-no"
+              type="radio"
+              class="form-check-input"
+              [value]="false"
+              formControlName="question9"> No
+          </label>
+        </div>
+    </div>
+    <div
+      *ngIf="formErrors.question9"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.question9">
+    </div>
+  </div>
+  <!-- View Question 9 Person -->
+  <div>
+  <div class="row justify-content form-inline">
+      <div class="col form-group">
+        <label for="question9Person" class="label-inline-group col-form-label-sm">Person responsible is:</label>
+          <input
+            id="question9-person"
+            type="text"
+            class="form-control ml-2 form-control-sm"
+            [placeholder]=""
+            formControlName="question9Person">
+        </div>
+    </div>
+    <div
+      *ngIf="formErrors.question9Person"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.question9Person">
+    </div>
+  </div>
+</li>
+<li class="list-group-item">
+<!-- View Question 10 -->
+  <div>
+  <div class="row justify-content">
+      <div class="col">
+        <label class="label-inline-group">The person responsible to ensure no one enters in excess of the posted occupant load limit, which includes all employees, guests and performers?</label>
+      </div>
+      <div class="col col-2 col-md-1">
+          <label class="form-check-label">
+            <input
+              id="question10-yes"
+              type="radio"
+              class="form-check-input"
+              [value]="true"
+              formControlName="question10"> Yes
+          </label>
+        </div>
+        <div class="col col-2 col-md-1">
+          <label class="form-check-label">
+            <input
+              id="question10-no"
+              type="radio"
+              class="form-check-input"
+              [value]="false"
+              formControlName="question10"> No
+          </label>
+        </div>
+    </div>
+    <div
+      *ngIf="formErrors.question10"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.question10">
+    </div>
+  </div>
+  <!-- View Question 10 Person -->
+  <div>
+  <div class="row justify-content form-inline">
+      <div class="col form-group">
+        <label for="question10Person" class="label-inline-group col-form-label-sm">Person responsible is:</label>
+          <input
+            id="question10-person"
+            type="text"
+            class="form-control ml-2 form-control-sm"
+            [placeholder]=""
+            formControlName="question10Person">
+        </div>
+    </div>
+    <div
+      *ngIf="formErrors.question10Person"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.question10Person">
+    </div>
+  </div>
+</li>
+<li class="list-group-item">
+
+</li>
+
+</ul>
+
+
 
   <!-- Description -->
-  <div class="form-group">
+ <!--  <div class="form-group">
     <label for="description">Description:</label>
     <textarea
       id="description"
@@ -155,7 +444,20 @@
       class="small text-danger formErrors"
       [innerHTML]="formErrors.description">
     </div>
-  </div>
+  </div> -->
+
+<input
+      id="userId"
+      type="hidden"
+      class="form-control"
+      formControlName="userId"
+      disabled="true">
+<input
+      id="venueId"
+      type="hidden"
+      class="form-control"
+      formControlName="venueId"
+      disabled="true">
 
   <!-- Submit -->
   <div class="form-group">

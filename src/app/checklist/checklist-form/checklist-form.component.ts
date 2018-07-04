@@ -1,14 +1,14 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DatePipe } from '@angular/common';
 
-import { ChecklistService } from './../../_services';
+import { AuthService,ChecklistService, ChecklistFormService } from './../../_services';
 import { ChecklistModel, FormChecklistModel } from './../../_models';
 import { dateValidator, dateRangeValidator } from './../../_validators';
 import { DATE_REGEX, TIME_REGEX, stringsToDate } from './../../_factories';
-import { ChecklistFormService } from './../../_services';
 
 @Component({
   selector: 'app-checklist-form',
@@ -33,30 +33,52 @@ export class ChecklistFormComponent implements OnInit, OnDestroy {
   error: boolean;
   submitting: boolean;
   submitBtnText: string;
+  venueId: string;
+  userId: string;
+  routeSub: Subscription;
+
 
   constructor(
     private fb: FormBuilder,
     private checklistService: ChecklistService,
     private datePipe: DatePipe,
-    public ef: ChecklistFormService,
-    private router: Router
+    public cf: ChecklistFormService,
+    private router: Router,
+    private route: ActivatedRoute,
+    public auth: AuthService,
   ) { }
 
   ngOnInit() {
-    this.formErrors = this.ef.formErrors;
-    this.isEdit = !!this.checklist;
-    this.submitBtnText = this.isEdit ? 'Update Checklist' : 'Create Checklist';
-    // Set initial form data
-    this.formChecklist = this._setFormChecklist();
-    // Use FormBuilder to construct the form
-    this._buildForm();
+    this.loggedInSub = this.auth.loggedIn$.subscribe(
+      loggedIn => {
+        // this.loading = true;
+        if (loggedIn) {
+          // this._routeSubs();
+          // console.log(this.auth.userProfile);
+          this.routeSub = this.route.params
+          .subscribe(params => {
+            this.id = params['id'];
+            this.venueId = params['id'];
+            this.userId = this.auth.userProfile.sub.split('|')[1];
+            // console.log(this.venueId);
+            this.formErrors = this.cf.formErrors;
+            this.isEdit = !!this.checklist;
+            this.submitBtnText = this.isEdit ? 'Update Checklist' : 'Create Checklist';
+            // Set initial form data
+            this.formChecklist = this._setFormChecklist();
+            // Use FormBuilder to construct the form
+            this._buildForm();
+          });
+        }
+      }
+    );
   }
 
   private _setFormChecklist() {
     if (!this.isEdit) {
       // If creating a new checklist, create new
       // FormChecklistModel with default null data
-      return new FormChecklistModel(null, null, null, null, null, null, null);
+      return new FormChecklistModel(this.userId, this.venueId, null, null, null, null);
     } else {
       // If editing existing checklist, create new
       // FormChecklistModel from existing data
@@ -66,63 +88,85 @@ export class ChecklistFormComponent implements OnInit, OnDestroy {
       // 'shortTime': 12:05 PM
       const _shortDate = 'M/d/yyyy';
       return new FormChecklistModel(
-        this.checklist.title,
+        this.checklist.userId,
+        this.checklist.venueId,
+        // this.checklist.title,
         this.checklist.location,
-        this.datePipe.transform(this.checklist.startDatetime, _shortDate),
-        this.datePipe.transform(this.checklist.startDatetime, 'shortTime'),
-        this.datePipe.transform(this.checklist.endDatetime, _shortDate),
-        this.datePipe.transform(this.checklist.endDatetime, 'shortTime'),
-        this.checklist.viewPublic,
-        this.checklist.description
+        this.checklist.question1,
+        this.checklist.question2,
+        this.checklist.question3,
+        this.checklist.question4,
+        this.checklist.question5,
+        this.checklist.question6,
+        this.checklist.question7,
+        this.checklist.question7Date,
+        this.checklist.question8,
+        this.checklist.question9,
+        this.checklist.question9Person,
+        this.checklist.description,
+        this.checklist.venueId,
+        this.checklist.userId
       );
     }
   }
 
   private _buildForm() {
     this.checklistForm = this.fb.group({
-      title: [this.formChecklist.title, [
-        Validators.required,
-        Validators.minLength(this.ef.textMin),
-        Validators.maxLength(this.ef.titleMax)
-      ]],
+      userId: [this.formChecklist.userId,
+        Validators.required
+      ],
+      venueId: [this.formChecklist.venueId,
+        Validators.required
+      ],
+      // title: [this.formChecklist.title, [
+      //   Validators.required,
+      //   Validators.minLength(this.cf.textMin),
+      //   Validators.maxLength(this.cf.titleMax)
+      // ]],
       location: [this.formChecklist.location, [
         Validators.required,
-        Validators.minLength(this.ef.textMin),
-        Validators.maxLength(this.ef.locMax)
+        Validators.minLength(this.cf.textMin),
+        Validators.maxLength(this.cf.locMax)
       ]],
-      viewPublic: [this.formChecklist.viewPublic,
+      question1: [this.formChecklist.question1,
+        Validators.required
+      ],
+      question2: [this.formChecklist.question2,
+        Validators.required
+      ],
+      question3: [this.formChecklist.question3,
+        Validators.required
+      ],
+      question4: [this.formChecklist.question4,
+        Validators.required
+      ],
+      question5: [this.formChecklist.question5,
+        Validators.required
+      ],
+      question6: [this.formChecklist.question6,
+        Validators.required
+      ],
+      question7: [this.formChecklist.question7,
+        Validators.required
+      ],
+      question7Date: [this.formChecklist.question7Date,
+        Validators.required
+      ],
+      question8: [this.formChecklist.question8,
+        Validators.required
+      ],
+      question9: [this.formChecklist.question9,
+        Validators.required
+      ],
+      question9Person: [this.formChecklist.question9Person,
         Validators.required
       ],
       description: [this.formChecklist.description,
-        Validators.maxLength(this.ef.descMax)
+        Validators.maxLength(this.cf.descMax)
       ],
-      datesGroup: this.fb.group({
-        startDate: [this.formChecklist.startDate, [
-          Validators.required,
-          Validators.maxLength(this.ef.dateMax),
-          Validators.pattern(DATE_REGEX),
-          dateValidator()
-        ]],
-        startTime: [this.formChecklist.startTime, [
-          Validators.required,
-          Validators.maxLength(this.ef.timeMax),
-          Validators.pattern(TIME_REGEX)
-        ]],
-        endDate: [this.formChecklist.endDate, [
-          Validators.required,
-          Validators.maxLength(this.ef.dateMax),
-          Validators.pattern(DATE_REGEX),
-          dateValidator()
-        ]],
-        endTime: [this.formChecklist.endTime, [
-          Validators.required,
-          Validators.maxLength(this.ef.timeMax),
-          Validators.pattern(TIME_REGEX)
-        ]]
-      }, { validator: dateRangeValidator })
     });
     // Set local property to checklistForm datesGroup control
-    this.datesGroup = this.checklistForm.get('datesGroup');
+    // this.datesGroup = this.checklistForm.get('datesGroup');
 
     // Subscribe to form value changes
     this.formChangeSub = this.checklistForm
@@ -151,7 +195,7 @@ export class ChecklistFormComponent implements OnInit, OnDestroy {
     if (!this.checklistForm) { return; }
     const _setErrMsgs = (control: AbstractControl, errorsObj: any, field: string) => {
       if (control && control.dirty && control.invalid) {
-        const messages = this.ef.validationMessages[field];
+        const messages = this.cf.validationMessages[field];
         for (const key in control.errors) {
           if (control.errors.hasOwnProperty(key)) {
             errorsObj[field] += messages[key] + '<br>';
@@ -169,33 +213,37 @@ export class ChecklistFormComponent implements OnInit, OnDestroy {
           this.formErrors[field] = '';
           _setErrMsgs(this.checklistForm.get(field), this.formErrors, field);
         } else {
-          // Set errors for fields inside datesGroup
-          const datesGroupErrors = this.formErrors['datesGroup'];
-          for (const dateField in datesGroupErrors) {
-            if (datesGroupErrors.hasOwnProperty(dateField)) {
-              // Clear previous error message (if any)
-              datesGroupErrors[dateField] = '';
-              _setErrMsgs(this.datesGroup.get(dateField), datesGroupErrors, dateField);
-            }
-          }
+          // // Set errors for fields inside datesGroup
+          // const datesGroupErrors = this.formErrors['datesGroup'];
+          // for (const dateField in datesGroupErrors) {
+          //   if (datesGroupErrors.hasOwnProperty(dateField)) {
+          //     // Clear previous error message (if any)
+          //     datesGroupErrors[dateField] = '';
+          //     _setErrMsgs(this.datesGroup.get(dateField), datesGroupErrors, dateField);
+          //   }
+          // }
         }
       }
     }
   }
 
   private _getSubmitObj() {
-    const startDate = this.datesGroup.get('startDate').value;
-    const startTime = this.datesGroup.get('startTime').value;
-    const endDate = this.datesGroup.get('endDate').value;
-    const endTime = this.datesGroup.get('endTime').value;
-    // Convert form startDate/startTime and endDate/endTime
-    // to JS dates and populate a new ChecklistModel for submission
     return new ChecklistModel(
-      this.checklistForm.get('title').value,
+      this.checklistForm.get('userId').value,
+      this.checklistForm.get('venueId').value,
+      // this.checklistForm.get('title').value,
       this.checklistForm.get('location').value,
-      stringsToDate(startDate, startTime),
-      stringsToDate(endDate, endTime),
-      this.checklistForm.get('viewPublic').value,
+      this.checklistForm.get('question1').value,
+      this.checklistForm.get('question2').value,
+      this.checklistForm.get('question3').value,
+      this.checklistForm.get('question4').value,
+      this.checklistForm.get('question5').value,
+      this.checklistForm.get('question6').value,
+      this.checklistForm.get('question7').value,
+      this.checklistForm.get('question7Date').value,
+      this.checklistForm.get('question8').value,
+      this.checklistForm.get('question9').value,
+      this.checklistForm.get('question9Person').value,
       this.checklistForm.get('description').value,
       this.checklist ? this.checklist._id : null
     );

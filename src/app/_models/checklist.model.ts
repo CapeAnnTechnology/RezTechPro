@@ -15,13 +15,14 @@ class ChecklistModel {
 
 class FormChecklistModel {
   constructor(
+    public userId: string,
+    public venueId: string,
     public title: string,
     public location: string,
-    public startDate: string,
-    public startTime: string,
-    public endDate: string,
-    public endTime: string,
-    public viewPublic: boolean,
+    public question1?: string,
+    public question2?: string,
+    public question3?: string,
+    public question4?: string,
     public description?: string
   ) { }
 }

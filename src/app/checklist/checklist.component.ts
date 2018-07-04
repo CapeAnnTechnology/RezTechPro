@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { AuthService, ChecklistService, UtilityService } from '../_services';
 import { ChecklistModel } from './../_models';
 import { environment } from '../../environments/environment';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-checklist',
@@ -30,7 +31,8 @@ export class ChecklistComponent implements OnInit, OnDestroy {
     public auth: AuthService,
     private checklistService: ChecklistService,
     public utils: UtilityService,
-    private title: Title
+    private title: Title,
+    private datePipe: DatePipe
   ) { }
 
   ngOnInit() {
@@ -67,7 +69,7 @@ export class ChecklistComponent implements OnInit, OnDestroy {
       .subscribe(
         res => {
           this.checklist = res;
-          this._setPageTitle(this.checklist.venueId.title.toString()+' Checklist '+this.utils.eventDates(this.checklist.timestamp,this.checklist.timestamp).toString());
+          this._setPageTitle(this.checklist.venueId.title+' Checklist '+this.datePipe.transform(this.checklist.timestamp,'fullDate'));
           this.loading = false;
           this.checklistPast = this.utils.eventPast(this.checklist.endDatetime);
         },

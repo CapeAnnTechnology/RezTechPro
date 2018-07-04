@@ -14,20 +14,30 @@
     <ul *ngIf="checklists.length" class="list-group list-group-flush">
       <li
         *ngFor="let checklist of checklists"
-        class="list-group-item">
-        {{ utils.eventDates(checklist.datetime, checklist.datetime) }}
-        <ng-template [ngIf]="auth.isAdmin">
-            <a [routerLink]="['/checklist/', checklist._id]" class="btn btn-primary btn-sm"><fa name="eye"></fa> View</a>
-        </ng-template>
-        &nbsp;
-        <ng-template [ngIf]="auth.isAdmin">
-            <a href="{{api_url}}checklist/{{checklist._id}}/pdf" target="_BLANK" class="btn btn-danger btn-sm"><fa name="file-pdf-o"></fa> PDF</a>
-        </ng-template>
+        class="list-group-item d-flex">
+        <div class="mr-auto">
+          {{ checklist.timestamp | date:'fullDate' }}
+        </div>
+        <div>
+          <ng-template [ngIf]="auth.isAdmin">
+              <a [routerLink]="['/checklist/', checklist._id]" class="btn btn-primary btn-sm"><fa name="eye"></fa> View</a>
+          </ng-template>
+        </div>
+        <div class="ml-2">
+          <ng-template [ngIf]="auth.isAdmin">
+              <a href="{{api_url}}checklist/{{checklist._id}}/pdf" target="_BLANK" class="btn btn-info btn-sm"><fa name="file-pdf-o"></fa> PDF</a>
+          </ng-template>
+        </div>
+        <div class="ml-2">
+          <ng-template [ngIf]="auth.isAdmin">
+              <a href="{{api_url}}checklist/{{checklist._id}}/delete" target="_BLANK" class="btn btn-danger btn-sm"><fa name="trash"></fa> Delete</a>
+          </ng-template>
+        </div>
       </li>
     </ul>
   </section>
 
-<p>
+<p class="p-3">
     <a
       class="btn btn-success btn-block"
       routerLink="/checklist/{{venueId}}/new"><fa name="calendar-check-o"></fa> Create New Checklist</a>

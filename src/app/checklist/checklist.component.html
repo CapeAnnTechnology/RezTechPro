@@ -2,6 +2,10 @@
 
 <ng-template [ngIf]="utils.isLoaded(loading)">
   <h1 class="text-center">{{ pageTitle }}</h1>
+  <div class="mb-2">
+    <a [routerLink]="['/venue/', checklist.venueId._id]" class="btn btn-sm btn-outline-primary  ml-2"><fa name="glass"></fa> View Venue</a>
+    <a [routerLink]="['/venue/', checklist.venueId._id]" [queryParams]="{tab: 'checklists'}" class="btn btn-sm btn-outline-primary ml-2"><fa name="calendar-check-o"></fa> View Checklists</a>
+  </div>
   <!-- Checklist -->
   <ng-template [ngIf]="checklist">
     <!-- Checklist is over -->
