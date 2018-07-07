@@ -71,7 +71,7 @@ export class ChecklistComponent implements OnInit, OnDestroy {
           this.checklist = res;
           this._setPageTitle(this.checklist.venueId.title+' Checklist '+this.datePipe.transform(this.checklist.timestamp,'fullDate'));
           this.loading = false;
-          this.checklistPast = this.utils.eventPast(this.checklist.endDatetime);
+          // this.checklistPast = this.utils.eventPast(this.checklist.timestamp);
         },
         err => {
           console.error(err);

@@ -1,19 +1,5 @@
+<h2>{{pageTitle}}</h2>
 <form [formGroup]="checklistForm" (ngSubmit)="onSubmit()">
-  <!-- Title -->
-  <!-- <div class="form-group">
-    <label for="title">Title</label>
-    <input
-      id="title"
-      type="text"
-      class="form-control"
-      formControlName="title"
-      [maxlength]="ef.titleMax">
-    <div
-      *ngIf="formErrors.title"
-      class="small text-danger formErrors"
-      [innerHTML]="formErrors.title">
-    </div>
-  </div> -->
 <ul class="list-group list-group-flush">
 <li class="list-group-item">
 <!-- View Question 1 -->
@@ -423,9 +409,293 @@
   </div>
 </li>
 <li class="list-group-item">
-
+<!-- View Question 11 -->
+  <div>
+  <div class="row justify-content">
+      <div class="col">
+        <label class="label-inline-group">Is the Certificate of Inspection posted?</label>
+      </div>
+      <div class="col col-2 col-md-1">
+          <label class="form-check-label">
+            <input
+              id="question11-yes"
+              type="radio"
+              class="form-check-input"
+              [value]="true"
+              formControlName="question11"> Yes
+          </label>
+        </div>
+        <div class="col col-2 col-md-1">
+          <label class="form-check-label">
+            <input
+              id="question11-no"
+              type="radio"
+              class="form-check-input"
+              [value]="false"
+              formControlName="question11"> No
+          </label>
+        </div>
+    </div>
+    <div
+      *ngIf="formErrors.question11"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.question11">
+    </div>
+  </div>
+  <!-- View Question 11 Capacity -->
+  <div>
+  <div class="row justify-content form-inline">
+      <div class="col form-group">
+        <label for="question11Capacity" class="label-inline-group col-form-label-sm">Maximum Capacity:</label>
+          <input
+            id="question11-capacity"
+            type="text"
+            class="form-control ml-2 form-control-sm"
+            formControlName="question11Capacity">
+        </div>
+    </div>
+    <div
+      *ngIf="formErrors.question11Capacity"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.question11Capacity">
+    </div>
+  </div>
+  <!-- View Question 11 Date -->
+  <div>
+  <div class="row justify-content form-inline">
+      <div class="col form-group">
+        <label for="question11Date" class="label-inline-group col-form-label-sm">Expiration Date:</label>
+          <input
+            id="question11-date"
+            type="text"
+            class="form-control ml-2 form-control-sm"
+            [placeholder]="cf.dateFormat"
+            formControlName="question11Date">
+        </div>
+    </div>
+    <div
+      *ngIf="formErrors.question11Date"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.question11Date">
+    </div>
+  </div>
 </li>
-
+<li class="list-group-item">
+<!-- View Question 12 -->
+  <div>
+  <div class="row justify-content">
+      <div class="col">
+        <label class="label-inline-group">Has the sprinkler system been inspected within the last year?</label>
+      </div>
+      <div class="col col-2 col-md-1">
+          <label class="form-check-label">
+            <input
+              id="question12-yes"
+              type="radio"
+              class="form-check-input"
+              [value]="true"
+              formControlName="question12"> Yes
+          </label>
+        </div>
+        <div class="col col-2 col-md-1">
+          <label class="form-check-label">
+            <input
+              id="question12-no"
+              type="radio"
+              class="form-check-input"
+              [value]="false"
+              formControlName="question12"> No
+          </label>
+        </div>
+    </div>
+    <div
+      *ngIf="formErrors.question12"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.question12">
+    </div>
+  </div>
+  <!-- View Question 12 Date -->
+  <div>
+  <div class="row justify-content form-inline">
+      <div class="col form-group">
+        <label for="question12Date" class="label-inline-group col-form-label-sm">Most recent automatic sprinkler inspection/test date: </label>
+          <input
+            id="question12-date"
+            type="text"
+            class="form-control ml-2 form-control-sm"
+            [placeholder]="cf.dateFormat"
+            formControlName="question12Date">
+        </div>
+    </div>
+    <div
+      *ngIf="formErrors.question12Date"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.question12Date">
+    </div>
+  </div>
+</li>
+<li class="list-group-item">
+<!-- View Question 13 -->
+  <div>
+  <div class="row justify-content">
+      <div class="col">
+        <label class="label-inline-group">Are exterior stairways and means of egress free of snow and ice?</label>
+      </div>
+      <div class="col col-2 col-md-1">
+          <label class="form-check-label">
+            <input
+              id="question13-yes"
+              type="radio"
+              class="form-check-input"
+              [value]="true"
+              formControlName="question13"> Yes
+          </label>
+        </div>
+        <div class="col col-2 col-md-1">
+          <label class="form-check-label">
+            <input
+              id="question13-no"
+              type="radio"
+              class="form-check-input"
+              [value]="false"
+              formControlName="question13"> No
+          </label>
+        </div>
+    </div>
+    <div
+      *ngIf="formErrors.question13"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.question13">
+    </div>
+  </div>
+  <!-- View Question 13 Date -->
+  <div>
+  <div class="row justify-content form-inline">
+      <div class="col form-group">
+        <label for="question13Date" class="label-inline-group col-form-label-sm">Date of last cleaning?</label>
+          <input
+            id="question13-date"
+            type="text"
+            class="form-control ml-2 form-control-sm"
+            [placeholder]="cf.dateFormat"
+            formControlName="question13Date">
+        </div>
+    </div>
+    <div
+      *ngIf="formErrors.question13Date"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.question13Date">
+    </div>
+  </div>
+</li>
+<li class="list-group-item">
+<!-- View Question 14 -->
+  <div>
+  <div class="row justify-content">
+      <div class="col">
+        <label class="label-inline-group">Has the commercial cooking equipment exhaust system been cleaned in accordance with the required frequency? </label>
+      </div>
+      <div class="col col-2 col-md-1">
+          <label class="form-check-label">
+            <input
+              id="question14-yes"
+              type="radio"
+              class="form-check-input"
+              [value]="true"
+              formControlName="question14"> Yes
+          </label>
+        </div>
+        <div class="col col-2 col-md-1">
+          <label class="form-check-label">
+            <input
+              id="question14-no"
+              type="radio"
+              class="form-check-input"
+              [value]="false"
+              formControlName="question14"> No
+          </label>
+        </div>
+    </div>
+    <div
+      *ngIf="formErrors.question14"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.question14">
+    </div>
+  </div>
+  <!-- View Question 14 Date -->
+  <div>
+  <div class="row justify-content form-inline">
+      <div class="col form-group">
+        <label for="question14Date" class="label-inline-group col-form-label-sm">Date of last cleaning?</label>
+          <input
+            id="question14-date"
+            type="text"
+            class="form-control ml-2 form-control-sm"
+            [placeholder]="cf.dateFormat"
+            formControlName="question14Date">
+        </div>
+    </div>
+    <div
+      *ngIf="formErrors.question14Date"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.question14Date">
+    </div>
+  </div>
+</li>
+<li class="list-group-item">
+<!-- View Question 15 -->
+  <div>
+  <div class="row justify-content">
+      <div class="col">
+        <label class="label-inline-group">Has the commercial cooking fire suppression system been inspected in the last six months?</label>
+      </div>
+      <div class="col col-2 col-md-1">
+          <label class="form-check-label">
+            <input
+              id="question15-yes"
+              type="radio"
+              class="form-check-input"
+              [value]="true"
+              formControlName="question15"> Yes
+          </label>
+        </div>
+        <div class="col col-2 col-md-1">
+          <label class="form-check-label">
+            <input
+              id="question15-no"
+              type="radio"
+              class="form-check-input"
+              [value]="false"
+              formControlName="question15"> No
+          </label>
+        </div>
+    </div>
+    <div
+      *ngIf="formErrors.question15"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.question15">
+    </div>
+  </div>
+  <!-- View Question 15 Date -->
+  <div>
+  <div class="row justify-content form-inline">
+      <div class="col form-group">
+        <label for="question15Date" class="label-inline-group col-form-label-sm">Date of last inspection:</label>
+          <input
+            id="question15-date"
+            type="text"
+            class="form-control ml-2 form-control-sm"
+            [placeholder]="cf.dateFormat"
+            formControlName="question15Date">
+        </div>
+    </div>
+    <div
+      *ngIf="formErrors.question15Date"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.question15Date">
+    </div>
+  </div>
+</li>
 </ul>
 
 
@@ -451,13 +721,19 @@
       type="hidden"
       class="form-control"
       formControlName="userId"
-      disabled="true">
+      >
 <input
       id="venueId"
       type="hidden"
       class="form-control"
       formControlName="venueId"
-      disabled="true">
+      >
+<input
+      id="version"
+      type="hidden"
+      class="form-control"
+      formControlName="version"
+      >
 
   <!-- Submit -->
   <div class="form-group">
