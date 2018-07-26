@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
-import { ChecklistService, EventService, UtilityService, FilterService } from '../_services';
+import { AuthService, ChecklistService, EventService, UtilityService, FilterService } from '../_services';
 import { EventModel, ChecklistModel, VenueModel } from '../_models';
 
 @Component({
@@ -31,7 +31,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     public utility: UtilityService,
     private event: EventService,
     private checklist: ChecklistService,
-    public fs: FilterService ) { }
+    public fs: FilterService,
+    public auth: AuthService  ) { }
 
  ngOnInit() {
   this.title.setTitle(this.pageTitle);

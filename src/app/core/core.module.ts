@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
-import { AnswerPipe, PhonePipe } from './../_pipes';
+import { AnswerPipe, UcwordsPipe, PhonePipe } from './../_pipes';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { EventService, UtilityService, FilterService } from './../_services';
@@ -27,7 +27,8 @@ import { LoadingComponent, HeaderComponent, FooterComponent } from './../_direct
     LoadingComponent,
     SubmittingComponent,
     PhonePipe,
-    AnswerPipe
+    AnswerPipe,
+    UcwordsPipe
   ],
   exports: [
     HttpClientModule,
@@ -40,6 +41,7 @@ import { LoadingComponent, HeaderComponent, FooterComponent } from './../_direct
     SubmittingComponent,
     PhonePipe,
     AnswerPipe,
+    UcwordsPipe,
     AngularFontAwesomeModule,
   ]
 })

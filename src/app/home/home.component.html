@@ -3,6 +3,16 @@
 	<img src="/assets/img/reztechpro-logo.png" />
 </div>
 
+<div *ngIf="!auth.loggedIn"  class="logged-out">
+<div class="header-page-authStatus">
+      <span *ngIf="auth.loggingIn">Logging in...</span>
+      <ng-template [ngIf]="!auth.loggingIn">
+        <a (click)="auth.login()">Log In</a> or <a (click)="auth.login()">Sign Up</a>
+      </ng-template>
+    </div>
+</div>
+
+<div *ngIf="auth.loggedIn"  class="logged-in">
 <h1 class="text-center">{{ pageTitle }}</h1>
 <app-loading *ngIf="loading"></app-loading>
 <h2>Checklists</h2>
@@ -61,3 +71,4 @@
   </p>
 
 </ng-template>
+</div>

@@ -69,6 +69,14 @@ const appRoutes: Routes = [
     ]
   },
   {
+    path: 'inspection/:id',
+    loadChildren: './inspection/inspection.module#InspectionModule',
+    canActivate: [
+      AuthGuard,
+      AdminGuard
+    ]
+  },
+  {
     path: 'checklist/:id',
     loadChildren: './checklist/checklist.module#ChecklistModule',
     canActivate: [

@@ -8,6 +8,7 @@ import { CoreModule } from './../core/core.module';
 import { VenueComponent } from './venue.component';
 import { VenueDetailComponent } from './venue-detail/venue-detail.component';
 import { VenueChecklistsComponent } from './venue-checklists/venue-checklists.component';
+import { VenueInspectionsComponent } from './venue-inspections/venue-inspections.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { VenueChecklistsComponent } from './venue-checklists/venue-checklists.co
     VenueComponent,
     VenueDetailComponent,
     VenueChecklistsComponent,
+    VenueInspectionsComponent,
   ]
 })
 export class VenueModule { }

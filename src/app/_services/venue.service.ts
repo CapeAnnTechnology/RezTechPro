@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 
 import { throwError as ObservableThrowError, Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { ChecklistModel, VenueModel } from '../_models';
+import { ChecklistModel, InspectionModel, VenueModel } from '../_models';
 import { MessageService } from './message.service';
 import { environment } from '../../environments/environment';
 import { AuthService } from './auth.service';
@@ -89,6 +89,17 @@ export class VenueService {
   getChecklistsByVenueId$(venueId: string): Observable<ChecklistModel[]> {
     return this.http
       .get<ChecklistModel[]>(`${environment.BASE_API}venue/${venueId}/checklists`, {
+        headers: new HttpHeaders().set('Authorization', this._authHeader)
+      })
+      .pipe(
+        catchError((error) => this._handleError(error))
+      );
+  }
+
+  // GET Inspections by venue ID (login required)
+  getInspectionsByVenueId$(venueId: string): Observable<InspectionModel[]> {
+    return this.http
+      .get<InspectionModel[]>(`${environment.BASE_API}venue/${venueId}/inspections`, {
         headers: new HttpHeaders().set('Authorization', this._authHeader)
       })
       .pipe(

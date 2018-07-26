@@ -40,6 +40,13 @@
               [queryParams]="{ tab: 'employees' }"
               [ngClass]="{ 'active': utils.tabIs(tab, 'employees') }">Employees</a>
           </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              [routerLink]="[]"
+              [queryParams]="{ tab: 'inspections' }"
+              [ngClass]="{ 'active': utils.tabIs(tab, 'inspections') }">Inspections</a>
+          </li>
         </ul>
       </div>
 
@@ -52,6 +59,11 @@
       <app-venue-checklists
         *ngIf="utils.tabIs(tab, 'checklists')"
         [venueId]="venue._id"></app-venue-checklists>
+
+        <!-- Business Venue tab -->
+      <app-venue-inspections
+        *ngIf="utils.tabIs(tab, 'inspections')"
+        [venueId]="venue._id"></app-venue-inspections>
     </div>
   </ng-template>
 

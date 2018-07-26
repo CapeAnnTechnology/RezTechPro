@@ -53,6 +53,7 @@ import { environment } from '../environments/environment';
 
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 import { MyRsvpsComponent } from './my-rsvps/my-rsvps.component';
+// import { InspectionComponent } from './inspection';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { MyRsvpsComponent } from './my-rsvps/my-rsvps.component';
     UserAddComponent,
       UserComponent,
       UserDetailComponent,
+    //  InspectionComponent,
   ],
   imports: [
     BrowserAnimationsModule,
