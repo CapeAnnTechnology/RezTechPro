@@ -7,7 +7,11 @@ export const INSPECTION_ROUTES: Routes = [
     component: InspectionComponent
   },
   {
-    path: 'new',
+    path: ':id',
+    component: InspectionComponent
+  },
+  {
+    path: ':id/new',
     component: InspectionNewComponent
   }
 ];

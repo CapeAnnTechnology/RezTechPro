@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { AuthService, UtilityService } from './../../_services';
+import { InspectionModel } from './../../_models';
 
 @Component({
   selector: 'app-inspection-detail',
@@ -6,10 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./inspection-detail.component.scss']
 })
 export class InspectionDetailComponent implements OnInit {
+	@Input() inspection: InspectionModel;
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+  	constructor( public utils: UtilityService,
+  				 public auth: AuthService ) { }
 
 }

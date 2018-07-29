@@ -1,3 +1,69 @@
-<p>
-  inspection-detail works!
-</p>
+<div class="card-body">
+  <h2 class="card-title text-center mb-0">Inspection Details</h2>
+</div>
+
+<ul class="list-group list-group-flush">
+  <li class="list-group-item">
+    <strong>Inspection Type:</strong>{{ inspection.type }}
+  </li>
+  <ng-template [ngIf]="inspection.inspectionDatetime">
+  <li class="list-group-item">
+    <strong>Inspection Date:</strong>{{ inspection.inspectionDatetime | date:'shortDate' }}
+  </li>
+  </ng-template>
+  <ng-template [ngIf]="inspection.expirationDatetime">
+  <li class="list-group-item">
+    <strong>Expiration Date:</strong>{{ inspection.expirationDatetime | date:'shortDate' }}
+  </li>
+  </ng-template>
+</ul>
+
+
+<div class="card-body">
+  <h3 class="card-title text-center mb-0">Venue Details</h3>
+</div>
+
+
+<ul class="list-group list-group-flush">
+  <li class="list-group-item">
+    <strong>Venue:</strong>{{ inspection.venueId.title }}
+  </li>
+  <li class="list-group-item">
+    <strong>Where:</strong>{{ inspection.venueId.location }} (<a href="https://www.google.com/maps/dir//{{ inspection.venueId.location }}" target="_blank">get directions</a>)
+  </li>
+  <li class="list-group-item">
+    <strong>Comments:</strong>{{ inspection.venueId.comments }}
+  </li>
+  <ng-template [ngIf]="inspection.venueId.phoneNumber">
+  <li class="list-group-item">
+    <strong>Phone Number:</strong><a href="tel:{{ inspection.venueId.phoneNumber }}">{{ inspection.venueId.phoneNumber | phone }}</a>
+  </li>
+  </ng-template>
+  <ng-template [ngIf]="inspection.venueId.faxNumber">
+	  <li class="list-group-item">
+	    <strong>Fax Number:</strong><a href="tel:{{ inspection.venueId.faxNumber }}">{{ inspection.venueId.faxNumber | phone }}</a>
+	  </li>
+   </ng-template>
+</ul>
+
+<div class="card-body" *ngIf="inspection.venueId.description">
+  <p class="card-text lead" [innerHTML]="inspection.venueId.description"></p>
+</div>
+
+<div *ngIf="auth.isAdmin" class="card-footer text-right small">
+  <a [routerLink]="['/inspection/update', inspection._id]">Edit</a>
+</div>
+
+<div class="card bg-light border-dark border-light m-4 small-text">
+  <div class="card-header">Checklist Signature</div>
+  <div class="card-body">
+      <h6 class="card-title small-text">Browser Details</h6>
+      <p class="card-text">User IP Address: {{ inspection.ipAddress }}</p>
+      <p class="card-text">User Browser Agent: {{ inspection.userAgent }}</p>
+  </div>
+  <div class="card-body">
+      <h6 class="card-title small-text">Submission Details</h6>
+      <p class="card-text">Submitted At: {{ inspection.timestamp }}</p>
+      <p class="card-text">Checklist ID: {{ inspection._id }}</p>
+  </div>
+</div>

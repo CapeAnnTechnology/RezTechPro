@@ -9,6 +9,7 @@ import { VenueComponent } from './venue.component';
 import { VenueDetailComponent } from './venue-detail/venue-detail.component';
 import { VenueChecklistsComponent } from './venue-checklists/venue-checklists.component';
 import { VenueInspectionsComponent } from './venue-inspections/venue-inspections.component';
+import { VenueLicensesComponent } from './venue-licenses/venue-licenses.component';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { VenueInspectionsComponent } from './venue-inspections/venue-inspections
     VenueDetailComponent,
     VenueChecklistsComponent,
     VenueInspectionsComponent,
+    VenueLicensesComponent,
   ]
 })
 export class VenueModule { }

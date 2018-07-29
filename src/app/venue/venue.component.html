@@ -47,6 +47,13 @@
               [queryParams]="{ tab: 'inspections' }"
               [ngClass]="{ 'active': utils.tabIs(tab, 'inspections') }">Inspections</a>
           </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              [routerLink]="[]"
+              [queryParams]="{ tab: 'licenses' }"
+              [ngClass]="{ 'active': utils.tabIs(tab, 'licenses') }">Licenses</a>
+          </li>
         </ul>
       </div>
 

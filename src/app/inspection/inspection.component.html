@@ -1,3 +1,78 @@
-<p>
-  inspection works!
-</p>
+<app-loading *ngIf="loading"></app-loading>
+
+<ng-template [ngIf]="utils.isLoaded(loading)">
+  <h1 class="text-center"><ng-template [ngIf]="inspection.type=='fire extinguishers inspection'">
+            <fa name="fire-extinguisher" fixed="true"></fa>
+          </ng-template>
+          <ng-template [ngIf]="inspection.type=='certificate of inspection'">
+            <fa name="certificate" fixed="true"></fa>
+          </ng-template>
+          <ng-template [ngIf]="inspection.type=='sprinkler inspection'">
+            <fa name="tint" fixed="true"></fa>
+          </ng-template>
+          <ng-template [ngIf]="inspection.type=='fire alarm system inspection'">
+            <fa name="bell" fixed="true"></fa>
+          </ng-template>
+          <ng-template [ngIf]="inspection.type=='cooking fire suppression system inspection'">
+            <fa name="cutlery" fixed="true"></fa>
+          </ng-template>
+        {{ inspection.type | ucwords }}</h1>
+  <div class="mb-2">
+    <a [routerLink]="['/venue/', inspection.venueId._id]" class="btn btn-sm btn-outline-primary  ml-2"><fa name="glass"></fa> View Venue</a>
+    <a [routerLink]="['/venue/', inspection.venueId._id]" [queryParams]="{tab: 'inspections'}" class="btn btn-sm btn-outline-primary ml-2"><fa name="search"></fa> View Inspections</a>
+  </div>
+  <!-- Checklist -->
+  <ng-template [ngIf]="inspection">
+    <!-- Checklist is over -->
+    <!-- <p *ngIf="checklistPast" class="alert alert-danger">
+      <strong>This checklist is over.</strong>
+    </p> -->
+
+    <div class="card">
+      <!-- Checklist tab navigation -->
+      <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              [routerLink]="[]"
+              [queryParams]="{ tab: 'details' }"
+              [ngClass]="{ 'active': utils.tabIs(tab, 'details') }">Details</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a
+              class="nav-link"
+              [routerLink]="[]"
+              [queryParams]="{ tab: 'rsvp' }"
+              [ngClass]="{ 'active': utils.tabIs(tab, 'rsvp') }">RSVP</a>
+          </li> -->
+          <ng-template [ngIf]="inspection.pdf">
+          <li class="nav-item">
+            <a
+              href="{{inspection.pdf}}"
+              target="_BLANK"
+              class="nav-link"
+              [ngClass]="{ 'active': utils.tabIs(tab, 'pdf') }"><fa name="file-pdf-o"></fa> PDF</a>
+          </li>
+        </ng-template>
+        </ul>
+      </div>
+
+      <!-- Checklist detail tab -->
+      <app-inspection-detail
+        *ngIf="utils.tabIs(tab, 'details')"
+        [inspection]="inspection"></app-inspection-detail>
+
+      <!-- Checklist RSVP tab -->
+      <!-- <app-rsvp
+        *ngIf="utils.tabIs(tab, 'rsvp')"
+        [checklistId]="checklist._id"
+        [checklistPast]="checklistPast"></app-rsvp> -->
+    </div>
+  </ng-template>
+
+  <!-- Error loading checklists -->
+  <p *ngIf="error" class="alert alert-danger">
+    <strong>Oops!</strong> There was an error retrieving information for this checklist.
+  </p>
+</ng-template>

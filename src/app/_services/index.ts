@@ -10,6 +10,7 @@ export * from './event.service';
 export * from './filter.service';
 export * from './form.service';
 export * from './inspection.service';
+export * from './inspection-form.service';
 export * from './log.service';
 export * from './message.service';
 export * from './sort.service';

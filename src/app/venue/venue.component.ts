@@ -12,7 +12,7 @@ import { NGXLogger } from 'ngx-logger';
   styleUrls: ['./venue.component.scss'],
   providers: [NGXLogger]
 })
-export class VenueComponent implements OnInit {
+export class VenueComponent implements OnInit, OnDestroy {
   pageTitle: string;
   id: string;
   loggedInSub: Subscription;

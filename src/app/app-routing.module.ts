@@ -69,7 +69,7 @@ const appRoutes: Routes = [
     ]
   },
   {
-    path: 'inspection/:id',
+    path: 'inspection',
     loadChildren: './inspection/inspection.module#InspectionModule',
     canActivate: [
       AuthGuard,

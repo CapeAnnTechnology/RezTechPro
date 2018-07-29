@@ -1,26 +1,92 @@
 <form [formGroup]="inspectionForm" (ngSubmit)="onSubmit()">
   <!-- Title -->
   <div class="form-group">
-    <label for="title">Title</label>
+    <label for="title">Type</label>
     <input
-      id="title"
+      id="type"
       type="text"
       class="form-control"
-      formControlName="title"
-      [maxlength]="ef.titleMax">
+      formControlName="type"
+      [maxlength]="ifs.textMax">
     <div
-      *ngIf="formErrors.title"
+      *ngIf="formErrors.type"
       class="small text-danger formErrors"
-      [innerHTML]="formErrors.title">
+      [innerHTML]="formErrors.type">
+    </div>
+  </div>
+  <div class="row">
+  <!-- Inspection date -->
+  <div class="form-group col-sm-12 col-md-6">
+    <label for="inspectionDatetime">Inspection Date</label>
+    <input
+      id="inspectionDatetime"
+      type="text"
+      class="form-control"
+      formControlName="inspectionDatetime"
+      [placeholder]="ifs.dateFormat"
+      [maxlength]="ifs.dateMax">
+    <div
+      *ngIf="formErrors.inspectionDatetime"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.inspectionDatetime">
     </div>
   </div>
 
+  <!-- Expiration date -->
+  <div class="form-group col-sm-12 col-md-6">
+    <label for="expirationDatetime">Expiration Date</label>
+    <input
+      id="expirationDatetime"
+      type="text"
+      class="form-control"
+      formControlName="expirationDatetime"
+      [placeholder]="ifs.dateFormat"
+      [maxlength]="ifs.dateMax">
+    <div
+      *ngIf="formErrors.expirationDatetime"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.expirationDatetime">
+    </div>
+  </div>
+
+  <!-- Venue ID -->
+  <div class="form-group col-sm-12 col-md-6">
+    <label for="venueId">VenueID</label>
+    <input
+      id="type"
+      type="text"
+      class="form-control"
+      formControlName="venueId"
+      [maxlength]="ifs.textMax">
+    <div
+      *ngIf="formErrors.venueId"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.venueId">
+    </div>
+  </div>
+
+  <!-- User ID -->
+  <div class="form-group col-sm-12 col-md-6">
+    <label for="userId">UserID</label>
+    <input
+      id="type"
+      type="text"
+      class="form-control"
+      formControlName="userId"
+      [maxlength]="ifs.textMax">
+    <div
+      *ngIf="formErrors.userId"
+      class="small text-danger formErrors"
+      [innerHTML]="formErrors.userId">
+    </div>
+  </div>
+  </div>
   <!-- Submit -->
   <div class="form-group">
     <button
       type="submit"
       class="btn btn-primary"
-      [attr.disabled]="eventForm.invalid || submitting ? true : null"
+      [attr.disabled]="inspectionForm.invalid || submitting ? true : null"
       [innerText]="submitBtnText"></button>
       <!-- https://github.com/angular/angular/issues/11271#issuecomment-289806196 -->
     <app-submitting *ngIf="submitting"></app-submitting>
@@ -32,7 +98,7 @@
 
     <!-- API submission error -->
     <p *ngIf="error" class="mt-3 alert alert-danger">
-      <strong>Error:</strong> There was a problem submitting the event. Please try again.
+      <strong>Error:</strong> There was a problem submitting the inspection. Please try again.
     </p>
   </div>
 </form>

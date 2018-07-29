@@ -4,11 +4,10 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DatePipe } from '@angular/common';
 
-import { EventService } from './../../_services';
+import { EventService, EventFormService } from './../../_services';
 import { EventModel, FormEventModel } from './../../_models';
 import { dateValidator, dateRangeValidator } from './../../_validators';
 import { DATE_REGEX, TIME_REGEX, stringsToDate } from './../../_factories';
-import { EventFormService } from './../../_services';
 
 @Component({
   selector: 'app-event-form',

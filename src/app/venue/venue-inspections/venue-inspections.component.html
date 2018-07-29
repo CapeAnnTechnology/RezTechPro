@@ -41,7 +41,10 @@
         </div>
         <div class="ml-2">
           <ng-template [ngIf]="auth.isAdmin">
-              <a href="{{api_url}}inspection/{{inspection._id}}/pdf" target="_BLANK" class="btn btn-info btn-sm"><fa name="file-pdf-o"></fa> PDF</a>
+              <a routerLink="/inspection/{{inspection._id}}" class="btn btn-success btn-sm"><fa name="search"></fa> View</a>&nbsp;
+              <ng-template [ngIf]="inspection.pdf">
+                <a href="{{inspection.pdf}}" target="_BLANK" class="btn btn-info btn-sm"><fa name="file-pdf-o"></fa> PDF</a>
+              </ng-template>
           </ng-template>
         </div>
       </li>
